@@ -1,0 +1,176 @@
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:animated_dialog_box/animated_dialog_box.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/components/atomic_widgets/sf_app_bar.dart';
+import 'package:flutter_boilerplate/components/atomic_widgets/sf_custom_alert.dart';
+import 'package:flutter_boilerplate/components/atomic_widgets/sf_elevated_button.dart';
+import 'package:flutter_boilerplate/components/atomic_widgets/sf_icon_button.dart';
+import 'package:flutter_boilerplate/components/atomic_widgets/sf_toast.dart';
+import 'package:flutter_boilerplate/components/personal_details/view/widgets/personal_details_list.dart';
+import 'package:flutter_boilerplate/components/personal_details/viewmodel/personal_details_viewmodel.dart';
+import 'package:flutter_boilerplate/core/constants/app_colors.dart';
+import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
+import 'package:flutter_boilerplate/core/constants/app_strings.dart';
+import 'package:flutter_boilerplate/core/exceptions/null_exception.dart';
+import 'package:flutter_boilerplate/core/exceptions/surname_exception.dart';
+import 'package:flutter_boilerplate/locator.dart';
+import 'package:flutter_boilerplate/toast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+
+class PersonalDetailsListScreen extends StatelessWidget {
+  PersonalDetailsListScreen({super.key});
+
+  final viewmodel = locator<PersonalDetailsViewModel>();
+
+  @override
+  Widget build(BuildContext context) {
+    fToast.init(context);
+    return Scaffold(
+      appBar:
+          SFAppBar().appBar(AppStrings.PERSONAL_DETAILS, onPressedLeading: () {
+        Get.back();
+        viewmodel.isEditing = false;
+      }, actions: [
+        SFIconButton(
+            iconIconButton: Icons.edit,
+            iconColor: AppColor.appBlack,
+            onPressedIconButton: viewmodel.isPressedEdit)
+      ]),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          PersonalDetailsList(),
+          Padding(
+            padding: const EdgeInsets.all(AppIntValues.TEN),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SFElevatedButton(
+                    size: const Size(0, AppIntValues.FIFTY),
+                    childEB: const Text(
+                      AppStrings.APPLY,
+                      style: TextStyle(color: AppColor.appWhite),
+                    ),
+                    onPressedEB: () async {
+                      bool isSuccess = false;
+                      if (viewmodel.tcno.length == 11) {
+                        viewmodel.isEditing = false;
+                        await Get.showOverlay(
+                          asyncFunction: () async {
+                            try {
+                              isSuccess = await viewmodel.updateUserInfo();
+                            } on SurnameException catch (surnameExp) {
+                              showDialog(
+                                context: context,
+                                builder: (context) => SFCustomAlert(
+                                    exception: surnameExp,
+                                    message:
+                                        AppStrings.ERROR_MESSAGE_NAME_SURNAME,
+                                    actions: [
+                                      SFElevatedButton(
+                                        childEB: const Text(
+                                          AppStrings.OK,
+                                          style: TextStyle(
+                                              color: AppColor.appBlue),
+                                        ),
+                                        onPressedEB: () => Get.back(),
+                                        color: AppColor.appWhite,
+                                      )
+                                    ],
+                                    imagePath: AppStrings.EXCLAMATION_ICON),
+                              );
+                            } on NullException catch (nullExp) {
+                              showDialog(
+                                context: context,
+                                builder: (context) => SFCustomAlert(
+                                    exception: nullExp,
+                                    message: AppStrings.MISSING_INFORMATION,
+                                    actions: [
+                                      SFElevatedButton(
+                                        childEB: const Text(
+                                          AppStrings.OK,
+                                          style: TextStyle(
+                                              color: AppColor.appBlue),
+                                        ),
+                                        onPressedEB: () => Get.back(),
+                                        color: AppColor.appWhite,
+                                      )
+                                    ],
+                                    imagePath: AppStrings.EXCLAMATION_ICON),
+                              );
+                            } catch (exp) {
+                              showDialog(
+                                context: context,
+                                builder: (context) => SFCustomAlert(
+                                    exception: Exception(),
+                                    message: AppStrings.UPDATE_FAILED,
+                                    actions: [
+                                      SFElevatedButton(
+                                        childEB: const Text(
+                                          AppStrings.OK,
+                                          style: TextStyle(
+                                              color: AppColor.appBlue),
+                                        ),
+                                        onPressedEB: () => Get.back(),
+                                        color: AppColor.appWhite,
+                                      )
+                                    ],
+                                    imagePath: AppStrings.EXCLAMATION_ICON),
+                              );
+                            }
+                          },
+                          loadingWidget: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          opacity: 0.5,
+                          opacityColor: AppColor.appOverlayColor,
+                        );
+                        isSuccess
+                            ? await animated_dialog_box.showScaleAlertBox(
+                                context: context,
+                                icon: SizedBox(
+                                    width:
+                                        // ignore: use_build_context_synchronously
+                                        MediaQuery.of(context).size.width / 4,
+                                    height:
+                                        // ignore: use_build_context_synchronously
+                                        MediaQuery.of(context).size.width / 4,
+                                    child: Image.asset(AppStrings.CHECK)),
+                                secondButton: const SizedBox(),
+                                title: const SizedBox(),
+                                yourWidget: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColor.appWhite,
+                                      borderRadius: BorderRadius.circular(
+                                          AppIntValues.TEN)),
+                                  child: const Text("Updated!"),
+                                ),
+                                firstButton: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SFElevatedButton(
+                                      childEB: const Text(AppStrings.OK),
+                                      onPressedEB: () => Get.back(),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : null;
+                      } else {
+                        fToast.showToast(
+                            child: SFToast(message: AppStrings.REQUIRED_TC_ID),
+                            toastDuration: const Duration(seconds: 2),
+                            gravity: ToastGravity.CENTER);
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
