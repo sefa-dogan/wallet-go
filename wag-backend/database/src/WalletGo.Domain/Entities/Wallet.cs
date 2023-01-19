@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Volo.Abp.Domain.Entities.Auditing;
+
+namespace WalletGo.Entities
+{
+    public class Wallet : AuditedAggregateRoot<Guid>
+    {
+        public string Name { get; set; }
+        public double Balance { get; set; }
+        public Guid UserInfoId { get; set; }
+        public UserInfo UserInfo { get; set; }
+        public List<AppAccount> Accounts { get; set; }
+    }
+}
