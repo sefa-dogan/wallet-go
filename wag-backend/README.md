@@ -4,7 +4,8 @@
 database/src klasörüne gidin.
 
 ### WalletGo.Application ###
-EntityServices klasörüne gidin. Burada ilgili tabloya ait app service'ler yer almaktadır. Bu service'lerin içinde oluşturulan her bir endpointe HTTP metodu ile istek gönderilerek veritabanında işlem yapılır.
+EntityServices klasörüne gidin. 
+Burada ilgili tabloya ait app service'ler yer almaktadır. Bu service'lerin içinde oluşturulan her bir endpointe HTTP metodu ile istek gönderilerek veritabanında işlem yapılır.
 
 ### WalletGo.Application.Contracts ###
 EntitiesDto klasörüne gidin.
@@ -18,7 +19,8 @@ Migrations klasörüne gidin.
 Burada oluşturulan migration dosyası ve snapshot dosyası bulunmaktadır.
 
 ### WalletGo.Domain ###
-Entities klasörüne gidin. Burada veritabanında oluşacak tabloların kolon isimleri yer almaktadır.
+Entities klasörüne gidin. 
+Burada veritabanında oluşacak tabloların kolon isimleri yer almaktadır.
 
 
 

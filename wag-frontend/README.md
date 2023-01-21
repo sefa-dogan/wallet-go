@@ -81,8 +81,4 @@ Kullanıcı yeni kart eklemek istediğinde bu ekrana gider ve siyah kutu ile sı
 
 ![image](https://user-images.githubusercontent.com/56110811/213872773-8b9b89df-bd98-465d-9045-a5db6e5f3d6a.png)
 
-<<<<<<< HEAD
-=======
 
-## Backend ##
->>>>>>> d00d8b3516ab8d3b52bb8a36c48224d335fe7289
