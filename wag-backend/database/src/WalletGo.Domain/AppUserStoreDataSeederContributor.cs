@@ -19,13 +19,6 @@ namespace WalletGo
             _appUserRepository = appUserRepository;
         }
 
-        /*
-                 public int TransactionId { get; set; }
-        public DateTime TransactionDate { get; set; }
-        public int FromAccountId { get; set; }
-        public int ToAccountId { get; set; }
-        public Double Amount { get; set; }
-         */
 
         public async Task SeedAsync(DataSeedContext context)
         {

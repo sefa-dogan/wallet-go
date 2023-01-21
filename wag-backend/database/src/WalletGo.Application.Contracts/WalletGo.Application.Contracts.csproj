@@ -8,6 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AppUserw\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="AppUserw\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="AppUserw\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WalletGo.Domain.Shared\WalletGo.Domain.Shared.csproj" />
   </ItemGroup>
 
@@ -19,12 +28,6 @@
     <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="6.0.2" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="6.0.2" />
     <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="6.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AppUserw\Dto\" />
-    <Folder Include="AppUserw\Sevice\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

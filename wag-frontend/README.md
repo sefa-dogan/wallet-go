@@ -53,4 +53,3 @@ Kullanıcının, uygulama hesabı ile ilgili bütün bilgilere erişebildği kö
 Kullanıcı yeni kart eklemek istediğinde bu ekrana gider ve siyah kutu ile sınırlandırılan alanda kamera açılır. Kullanıcı kartını bu alana sığdırarak taratılmasını sağlar.
 
 
-## Backend ##
