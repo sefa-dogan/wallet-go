@@ -23,6 +23,7 @@ class LoginScreen extends StatelessWidget {
   final viewmodel = locator<LoginViewModel>();
   @override
   Widget build(BuildContext context) {
+
     return Stack(children: [
       Scaffold(
         backgroundColor: AppColor.appBlue,
@@ -47,7 +48,12 @@ class LoginScreen extends StatelessWidget {
                         topRight: Radius.circular(AppIntValues.TEN))),
                 child: Column(
                   children: [
-                    Expanded(child: ListView(children: [LoginForm()])),
+                    Expanded(
+                        child: ListView(children: [
+                      LoginForm(
+                      
+                      )
+                    ])),
                     Padding(
                       padding:
                           const EdgeInsets.only(bottom: AppIntValues.TWENTY),
@@ -176,8 +182,8 @@ class LoginScreen extends StatelessWidget {
                                           context: context,
                                           builder: (context) {
                                             return SFCustomAlert(
-                                                message:
-                                                    AppStrings.INVALID_PASSWORD,
+                                                message: AppStrings
+                                                    .ERROR_MESSAGE_SOMETHING_WENT_WRONG,
                                                 exception: Exception(),
                                                 imagePath: AppStrings.SAD_FACE,
                                                 actions: [

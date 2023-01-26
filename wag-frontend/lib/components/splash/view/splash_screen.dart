@@ -25,13 +25,13 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(seconds: 2),
         viewmodel.isLoggedIn()
-            ? () async{
+            ? () async {
                 try {
                   await Get.showOverlay(
                       asyncFunction: () async {
-                        
-                          await viewmodel.getAppUserId().timeout(const Duration(seconds: 10));
-                        
+                        await viewmodel
+                            .getAppUserId()
+                            .timeout(const Duration(seconds: 10));
                       },
                       loadingWidget: const Center(
                         child: CircularProgressIndicator(),
@@ -39,11 +39,21 @@ class _SplashScreenState extends State<SplashScreen> {
                       opacity: 0.5,
                       opacityColor: AppColor.appOverlayColor);
                 } catch (exp) {
-                   showDialog(
+                  showDialog(
                     context: context,
                     builder: (context) => SFCustomAlert(
                         message: AppStrings.LOGIN_EXCEPTION,
-                        actions: [SFElevatedButton(childEB: const Text(AppStrings.OK), onPressedEB: () => Get.back(),)],
+                        actions: [
+                          SFElevatedButton(
+                            childEB: const Text(AppStrings.OK),
+                            onPressedEB: () => Get.offNamed(
+                                AppRoutes.LOGIN_SCREEN,
+                                arguments: [
+                                  viewmodel.username,
+                                  viewmodel.password
+                                ]),
+                          )
+                        ],
                         imagePath: AppStrings.SAD_FACE),
                   );
                 }

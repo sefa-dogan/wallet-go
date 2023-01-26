@@ -5,7 +5,7 @@ class AppStrings {
       "96569452-a3ba-fa4e-8cea-3a0898688b95";
   static const String ADMIN_WALLET_ID = "96569452-a3ba-fa4e-8cea-3a0898688b94";
 
-  static const String BASE_URL = "http://localhost:5000/";
+  static const String BASE_URL = "http://192.168.1.37:5000/";
   static const String APP_USERS_PATH = "api/app/app-user/";
   static const String IS_USER_REGISTERED_PATH =
       "api/app/app-user/is-registered/";
