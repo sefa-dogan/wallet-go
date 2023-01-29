@@ -66,6 +66,7 @@ Kullanıcının kartlarını görebildiği ve kartlara ait işlemleri listeleyeb
 
 ![image](https://user-images.githubusercontent.com/56110811/213872739-55fd06c9-5182-4d0a-b383-9bd1d4598351.png)
 ![image](https://user-images.githubusercontent.com/56110811/213872745-4edabb5d-32b6-4067-8554-4b5c8bcf6359.png)
+![image](https://user-images.githubusercontent.com/56110811/215298791-32968bee-8f0c-469a-96a1-6eae11127ea7.png)
 
 ##### Personal Details ####
 Kullanıcının kendi bilgilerini listeleyebildiği ekrandır. Sağ üstte bulunan edit butonuna bastıktan sonra bilgilerini güncelleyip “Apply” butonu ile veritabanına request gönderebilir.
