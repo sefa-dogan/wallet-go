@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_custom_alert.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_toast.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_boilerplate/core/exceptions/null_exception.dart';
 import 'package:flutter_boilerplate/toast.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:tckn_check/tckn_check.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -87,7 +89,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: SFElevatedButton(
                                 childEB: const Text(AppStrings.REGISTER),
                                 onPressedEB: () async {
-                                  if (viewmodel.tcno.length == 11) {
+                                  if (Tckn().check(viewmodel.tcno) &&
+                                      EmailValidator.validate(
+                                          viewmodel.email)) {
                                     await Get.showOverlay(
                                         asyncFunction: () async {
                                           try {
@@ -187,8 +191,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 message: AppStrings.SUCCESSFUL,
                                                 actions: [
                                                   SFElevatedButton(
-                                                    childEB:
-                                                        const Text(AppStrings.LOGIN),
+                                                    childEB: const Text(
+                                                        AppStrings.LOGIN),
                                                     onPressedEB: () =>
                                                         Get.offNamed(AppRoutes
                                                             .LOGIN_SCREEN),
@@ -200,7 +204,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   } else {
                                     fToast.showToast(
                                       child: SFToast(
-                                          message: AppStrings.REQUIRED_TC_ID),
+                                          message: AppStrings.VALIDATION_ERROR),
                                       gravity: ToastGravity.CENTER,
                                       toastDuration: const Duration(seconds: 2),
                                     );

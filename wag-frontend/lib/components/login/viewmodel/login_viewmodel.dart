@@ -113,7 +113,7 @@ abstract class _LoginViewModelBase with Store {
         await userStore.getLastTransactions();
         await prefs.setString("username", username);
         await prefs.setString("password", password);
-        Get.toNamed(AppRoutes.HOME_SCREEN);
+        Get.offAllNamed(AppRoutes.HOME_SCREEN);
       }
     } catch (error) {
       debugPrint(error.toString());

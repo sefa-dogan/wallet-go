@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_text_button.dart';
@@ -34,9 +35,9 @@ class PersonalDetailsList extends StatelessWidget {
                       viewmodel.nameAndSurname.isEmpty
                   ? AppStrings.ERROR_MESSAGE_NAME_SURNAME
                   : null,
-              onTap: () => viewmodel.showErrorMessageNameAndSurname = true,
+              onTap: () => viewmodel.isEditing = true,
               keyboardType: TextInputType.text,
-              enabled: viewmodel.isEditing,
+              // enabled: viewmodel.isEditing,
               autofocus: false,
               onChanged: (value) {
                 viewmodel.nameAndSurname = value;
@@ -51,13 +52,12 @@ class PersonalDetailsList extends StatelessWidget {
             return SFTextField(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              errorText:
-                  viewmodel.showErrorMessageEmail && viewmodel.email.isEmpty
-                      ? AppStrings.ERROR_MESSAGE_EMAIL
-                      : null,
-              onTap: () => viewmodel.showErrorMessageEmail = true,
+              errorText: EmailValidator.validate(viewmodel.email)
+                  ? null
+                  : AppStrings.ERROR_MESSAGE_EMAIL,
+              onTap: () => viewmodel.isEditing = true,
               keyboardType: TextInputType.emailAddress,
-              enabled: viewmodel.isEditing,
+              // enabled: viewmodel.isEditing,
               title: AppStrings.E_MAIL,
               autofocus: false,
               controller: viewmodel.isEditing
@@ -68,7 +68,7 @@ class PersonalDetailsList extends StatelessWidget {
               },
             );
           }),
-          Observer(builder: (_) {
+          /*  Observer(builder: (_) {
             return SFTextField(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -90,7 +90,7 @@ class PersonalDetailsList extends StatelessWidget {
                 viewmodel.tcno = value;
               },
             );
-          }),
+          }), */
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(

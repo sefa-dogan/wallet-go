@@ -14,9 +14,9 @@ part 'user_store.g.dart';
 class UserStore = _UserStoreBase with _$UserStore;
 
 abstract class _UserStoreBase with Store {
-  late AppUser appUser; //
-  late UserInfo userInfo; //
-  late Wallet wallet; //
+  late AppUser appUser;
+  late UserInfo userInfo;
+  late Wallet wallet;
   late List<AppAccount> appAccounts = [];
   late List<Transaction> transactions = [];
   late List<Transaction> lastTransactions = [];

@@ -5,7 +5,9 @@ import 'package:flutter_boilerplate/components/payment_methods/view/widgets/paym
 import 'package:flutter_boilerplate/components/payment_methods/viewmodel/payment_methods_viewmodel.dart';
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
+import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
+import 'package:get/get.dart';
 
 class PaymentMethodsListScreen extends StatelessWidget {
   PaymentMethodsListScreen({super.key});
@@ -16,6 +18,7 @@ class PaymentMethodsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.appWhite,
       appBar: SFAppBar().appBar(
+        onPressedLeading: () => Get.offNamed(AppRoutes.PROFILE_SCREEN),
         AppStrings.PAYMENT_METHODS,
         actions: [
           SFIconButton(

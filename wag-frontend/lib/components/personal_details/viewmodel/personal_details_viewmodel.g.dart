@@ -41,38 +41,6 @@ mixin _$PersonalDetailsViewModel on _PersonalDetailsViewModelBase, Store {
     });
   }
 
-  late final _$tcnoAtom =
-      Atom(name: '_PersonalDetailsViewModelBase.tcno', context: context);
-
-  @override
-  String get tcno {
-    _$tcnoAtom.reportRead();
-    return super.tcno;
-  }
-
-  @override
-  set tcno(String value) {
-    _$tcnoAtom.reportWrite(value, super.tcno, () {
-      super.tcno = value;
-    });
-  }
-
-  late final _$isEditingAtom =
-      Atom(name: '_PersonalDetailsViewModelBase.isEditing', context: context);
-
-  @override
-  bool get isEditing {
-    _$isEditingAtom.reportRead();
-    return super.isEditing;
-  }
-
-  @override
-  set isEditing(bool value) {
-    _$isEditingAtom.reportWrite(value, super.isEditing, () {
-      super.isEditing = value;
-    });
-  }
-
   late final _$showErrorMessageTcNoAtom = Atom(
       name: '_PersonalDetailsViewModelBase.showErrorMessageTcNo',
       context: context);
@@ -127,27 +95,11 @@ mixin _$PersonalDetailsViewModel on _PersonalDetailsViewModelBase, Store {
     });
   }
 
-  late final _$_PersonalDetailsViewModelBaseActionController =
-      ActionController(name: '_PersonalDetailsViewModelBase', context: context);
-
-  @override
-  dynamic isPressedEdit() {
-    final _$actionInfo = _$_PersonalDetailsViewModelBaseActionController
-        .startAction(name: '_PersonalDetailsViewModelBase.isPressedEdit');
-    try {
-      return super.isPressedEdit();
-    } finally {
-      _$_PersonalDetailsViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
 nameAndSurname: ${nameAndSurname},
 email: ${email},
-tcno: ${tcno},
-isEditing: ${isEditing},
 showErrorMessageTcNo: ${showErrorMessageTcNo},
 showErrorMessageEmail: ${showErrorMessageEmail},
 showErrorMessageNameAndSurname: ${showErrorMessageNameAndSurname}

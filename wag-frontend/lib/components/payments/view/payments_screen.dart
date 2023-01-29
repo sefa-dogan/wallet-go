@@ -19,6 +19,7 @@ class PaymentsScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           shadowColor: AppColor.appTransparent,
           title: const Text(AppStrings.PAYMENTS,
               style: TextStyle(color: AppColor.appBlack)),

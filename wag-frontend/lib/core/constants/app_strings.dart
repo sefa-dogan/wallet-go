@@ -57,6 +57,7 @@ class AppStrings {
   static const String SCAN_CARD_BACKGROUND = "assets/scan_card_background.jpg";
   static const String SUCCESS_PAYMENT = "assets/success.png";
   static const String CHECK = "assets/check.png";
+  static const String PDF_FONT = "assets/fonts/Roboto-Thin.ttf";
 
   static const String APP_NAME = "Wallet Go";
   static const String MY_WALLET = "MyWallet";
@@ -119,9 +120,10 @@ class AppStrings {
   static const String ERROR_MESSAGE_SOMETHING_WENT_WRONG =
       "Something went wrong";
   static const String LOGIN_EXCEPTION = "Login process has failed";
-
+  static const String VALIDATION_ERROR =
+      "Please enter your Tc and E-mail as right format";
   static const String REQUIRED_TC_ID =
-      "Please enter your TC ID number as 11 digits.";
+      "Please enter your TC ID as right format";
   static const String PERSONAL_DETAILS = "Personal details";
   static const String PAYMENT_METHODS = "Payment methods";
   static const String PAYMENT_METHOD = "Payment method";

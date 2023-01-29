@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/register/viewmodel/register_viewmodel.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:super_tooltip/super_tooltip.dart';
+import 'package:tckn_check/tckn_check.dart';
 
 class RegisterForm extends StatelessWidget {
   RegisterForm({super.key});
@@ -72,10 +74,10 @@ class RegisterForm extends StatelessWidget {
             return SFTextField(
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(AppIntValues.TEN)),
-              errorText:
-                  viewmodel.showErrorMessageTcNo && viewmodel.tcno.isEmpty
-                      ? AppStrings.ERROR_MESSAGE_TC_NO
-                      : null,
+              errorText: !viewmodel.showErrorMessageTcNo ||
+                      Tckn().check(viewmodel.tcno)
+                  ? null
+                  : AppStrings.ERROR_MESSAGE_TC_NO,
               keyboardType: TextInputType.number,
               maxLength: 11,
               controller: MaskedTextController(
@@ -91,10 +93,10 @@ class RegisterForm extends StatelessWidget {
             return SFTextField(
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(AppIntValues.TEN)),
-              errorText:
-                  viewmodel.showErrorMessageEmail && viewmodel.email.isEmpty
-                      ? AppStrings.ERROR_MESSAGE_EMAIL
-                      : null,
+              errorText: EmailValidator.validate(viewmodel.email) ||
+                      !viewmodel.showErrorMessageEmail
+                  ? null
+                  : AppStrings.ERROR_MESSAGE_EMAIL,
               keyboardType: TextInputType.emailAddress,
               title: AppStrings.E_MAIL,
               hintText: AppStrings.ENTER_E_MAIL,

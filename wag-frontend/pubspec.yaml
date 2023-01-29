@@ -41,6 +41,7 @@ dependencies:
   open_file: ^3.2.1
   tckn_check: ^0.0.4
   email_validator: ^2.1.17
+  flutter_bounceable: ^1.1.0
 
 
 
@@ -55,3 +56,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+  fonts:
+      - family: Raleway_ExtraLight
+        fonts:
+          - asset: assets/fonts/Raleway_ExtraLight.ttf
+      - family: Roboto-Thin
+        fonts:
+          - asset: assets/fonts/Roboto-Thin.ttf

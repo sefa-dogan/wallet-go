@@ -1,5 +1,6 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:animated_dialog_box/animated_dialog_box.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_app_bar.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_custom_alert.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/exceptions/null_exception.dart';
 import 'package:flutter_boilerplate/core/exceptions/surname_exception.dart';
+import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/toast.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -27,16 +29,19 @@ class PersonalDetailsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     fToast.init(context);
     return Scaffold(
-      appBar:
-          SFAppBar().appBar(AppStrings.PERSONAL_DETAILS, onPressedLeading: () {
-        Get.back();
-        viewmodel.isEditing = false;
-      }, actions: [
+      appBar: SFAppBar().appBar(
+        AppStrings.PERSONAL_DETAILS,
+        onPressedLeading: () {
+          viewmodel.isEditing = false;
+          Get.offNamed(AppRoutes.PROFILE_SCREEN);
+          // viewmodel.isEditing = false;
+        }, /* actions: [
         SFIconButton(
             iconIconButton: Icons.edit,
             iconColor: AppColor.appBlack,
             onPressedIconButton: viewmodel.isPressedEdit)
-      ]),
+      ], */
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -54,7 +59,7 @@ class PersonalDetailsListScreen extends StatelessWidget {
                     ),
                     onPressedEB: () async {
                       bool isSuccess = false;
-                      if (viewmodel.tcno.length == 11) {
+                      if (EmailValidator.validate(viewmodel.email)) {
                         viewmodel.isEditing = false;
                         await Get.showOverlay(
                           asyncFunction: () async {
@@ -159,7 +164,8 @@ class PersonalDetailsListScreen extends StatelessWidget {
                             : null;
                       } else {
                         fToast.showToast(
-                            child: SFToast(message: AppStrings.REQUIRED_TC_ID),
+                            child: SFToast(
+                                message: AppStrings.ERROR_MESSAGE_EMAIL),
                             toastDuration: const Duration(seconds: 2),
                             gravity: ToastGravity.CENTER);
                       }

@@ -23,7 +23,13 @@ class NotificationsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     bottomAppBarviewmodel.index = 2;
     return Scaffold(
-      appBar: SFAppBar().appBar(AppStrings.NOTIFICATIONS,onPressedLeading: () => Get.toNamed(AppRoutes.PROFILE_SCREEN),),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        shadowColor: AppColor.appTransparent,
+        title: const Text(AppStrings.NOTIFICATIONS,
+            style: TextStyle(color: AppColor.appBlack)),
+        backgroundColor: AppColor.appWhite,
+      ),
       backgroundColor: AppColor.appWhite,
       floatingActionButton: const SizedBox(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

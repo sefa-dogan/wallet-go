@@ -20,15 +20,13 @@ abstract class _PersonalDetailsViewModelBase with Store {
 
   String? name;
   String? surname;
+  String? tcno;
 
   @observable
   String nameAndSurname = "";
   @observable
   String email = "";
-  @observable
-  String tcno = "";
 
-  @observable
   bool isEditing = false;
   @observable
   bool showErrorMessageTcNo = false;
@@ -37,18 +35,18 @@ abstract class _PersonalDetailsViewModelBase with Store {
   @observable
   bool showErrorMessageNameAndSurname = false;
 
-  @action
-  isPressedEdit() {
-    isEditing = !isEditing;
-  }
+  // @action
+  // isPressedEdit() {
+  //   isEditing = !isEditing;
+  // }
 
   setNameAndSurname() {
     List<String> splitedNameAndSurname;
     String trimmedNameAndSurname = nameAndSurname.trim();
     if (trimmedNameAndSurname.contains(" ")) {
       splitedNameAndSurname = trimmedNameAndSurname.split(" ");
-      name = splitedNameAndSurname[0];
-      surname = splitedNameAndSurname[1];
+      name = splitedNameAndSurname.first;
+      surname = splitedNameAndSurname.last;
     } else {
       throw SurnameException();
     }
@@ -56,14 +54,14 @@ abstract class _PersonalDetailsViewModelBase with Store {
 
   Future<bool> updateUserInfo() async {
     bool isSuccess = false;
-    if (nameAndSurname.isNotEmpty && tcno.isNotEmpty && email.isNotEmpty) {
+    if (nameAndSurname.isNotEmpty&& email.isNotEmpty) {
       setNameAndSurname();
       UserInfo updatedUserInfo = UserInfo(
           id: userStore.userInfo.id,
           appUserId: userStore.userInfo.appUserId,
           name: name ?? userStore.userInfo.name,
           surname: surname ?? userStore.userInfo.surname,
-          tcno: tcno,
+          tcno: userStore.userInfo.tcno,
           email: email);
       try {
         var response = await dioClient.put(

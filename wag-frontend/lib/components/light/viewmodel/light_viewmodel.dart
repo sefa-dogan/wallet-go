@@ -135,6 +135,9 @@ abstract class _LightViewModelBase with Store {
       var response = await dioClient.put(
           AppStrings.UPDATE_APP_ACCOUNT_BALANCE_PATH + _iban,
           queryParameters: {"amount": _amount});
+      if (response.statusCode == 200) {
+        await userStore.getAppAccounts();
+      }
       return response.data;
     } catch (error) {
       debugPrint(error.toString());
