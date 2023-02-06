@@ -49,10 +49,10 @@ class PayWithTemplate extends StatelessWidget {
                 Column(
                   children: [
                     Row(
-                      children: const [
+                      children:  [
                         Text(
                           AppStrings.TEMPLATES,
-                          style: TextStyle(color: AppColor.appPaleGrey),
+                          style: const TextStyle(color: AppColor.appPaleGrey),
                         ),
                       ],
                     ),
@@ -109,17 +109,17 @@ class PayWithTemplate extends StatelessWidget {
                         return viewmodel.templateIndex == null
                             ? SFElevatedButton(
                                 size: const Size(200, 50),
-                                childEB: const Text(
+                                childEB:  Text(
                                     AppStrings.CONTINUE_WITHOUT_TEMPLATE,
-                                    style: TextStyle(color: AppColor.appBlue)),
+                                    style: const TextStyle(color: AppColor.appBlue)),
                                 color: AppColor.appWhite,
                                 borderColor: AppColor.appBlue,
                                 onPressedEB: () {},
                               )
                             : SFElevatedButton(
                                 size: const Size(200, 50),
-                                childEB: const Text(AppStrings.CONTINUE,
-                                    style: TextStyle(color: AppColor.appWhite)),
+                                childEB:  Text(AppStrings.CONTINUE,
+                                    style: const TextStyle(color: AppColor.appWhite)),
                                 color: AppColor.appBlue,
                                 borderColor: AppColor.appWhite,
                                 onPressedEB: () {

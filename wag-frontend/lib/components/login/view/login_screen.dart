@@ -23,18 +23,17 @@ class LoginScreen extends StatelessWidget {
   final viewmodel = locator<LoginViewModel>();
   @override
   Widget build(BuildContext context) {
-
     return Stack(children: [
       Scaffold(
         backgroundColor: AppColor.appBlue,
         body: Column(
           children: [
-            const Expanded(
+            Expanded(
               flex: 1,
               child: Center(
                 child: Text(
                   AppStrings.LOGIN,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -48,12 +47,7 @@ class LoginScreen extends StatelessWidget {
                         topRight: Radius.circular(AppIntValues.TEN))),
                 child: Column(
                   children: [
-                    Expanded(
-                        child: ListView(children: [
-                      LoginForm(
-                      
-                      )
-                    ])),
+                    Expanded(child: ListView(children: [LoginForm()])),
                     Padding(
                       padding:
                           const EdgeInsets.only(bottom: AppIntValues.TWENTY),
@@ -62,11 +56,11 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(AppStrings.HAVE_NOT_ACCOUNT),
+                              Text(AppStrings.HAVE_NOT_ACCOUNT),
                               SFTextButton(
-                                buttonChild: const Text(
+                                buttonChild: Text(
                                   AppStrings.REGISTER,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       decoration: TextDecoration.underline),
                                 ),
@@ -76,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                             ],
                           ),
                           SFElevatedButton(
-                              childEB: const Text(AppStrings.LOGIN),
+                              childEB: Text(AppStrings.LOGIN),
                               onPressedEB: () async {
                                 Get.showOverlay(
                                     asyncFunction: () async {
@@ -89,14 +83,15 @@ class LoginScreen extends StatelessWidget {
                                         showDialog(
                                           context: context,
                                           builder: (context) => SFCustomAlert(
+                                              title: AppStrings.WARNING,
                                               exception: timeOutExp,
                                               message:
                                                   AppStrings.CONNECTION_IS_LOW,
                                               actions: [
                                                 SFElevatedButton(
-                                                  childEB: const Text(
+                                                  childEB: Text(
                                                     AppStrings.OK,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color:
                                                             AppColor.appBlue),
                                                   ),
@@ -111,14 +106,15 @@ class LoginScreen extends StatelessWidget {
                                         showDialog(
                                           context: context,
                                           builder: (context) => SFCustomAlert(
+                                              title: AppStrings.WARNING,
                                               exception: nullExp,
                                               message: AppStrings
                                                   .MISSING_INFORMATION,
                                               actions: [
                                                 SFElevatedButton(
-                                                  childEB: const Text(
+                                                  childEB: Text(
                                                     AppStrings.OK,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color:
                                                             AppColor.appBlue),
                                                   ),
@@ -134,15 +130,16 @@ class LoginScreen extends StatelessWidget {
                                           context: context,
                                           builder: (context) {
                                             return SFCustomAlert(
+                                                title: AppStrings.WE_ARE_SAD,
                                                 message:
                                                     AppStrings.LOGIN_EXCEPTION,
                                                 exception: loginExp,
                                                 imagePath: AppStrings.SAD_FACE,
                                                 actions: [
                                                   SFElevatedButton(
-                                                    childEB: const Text(
+                                                    childEB: Text(
                                                       AppStrings.TRY_AGAIN,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color:
                                                               AppColor.appBlue),
                                                     ),
@@ -158,15 +155,17 @@ class LoginScreen extends StatelessWidget {
                                           context: context,
                                           builder: (context) {
                                             return SFCustomAlert(
+                                                title: AppStrings.WARNING,
                                                 message:
                                                     AppStrings.INVALID_PASSWORD,
                                                 exception: invalidPasswordExp,
-                                                imagePath: AppStrings.SAD_FACE,
+                                                imagePath:
+                                                    AppStrings.EXCLAMATION_ICON,
                                                 actions: [
                                                   SFElevatedButton(
-                                                    childEB: const Text(
+                                                    childEB: Text(
                                                       AppStrings.TRY_AGAIN,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color:
                                                               AppColor.appBlue),
                                                     ),
@@ -182,15 +181,17 @@ class LoginScreen extends StatelessWidget {
                                           context: context,
                                           builder: (context) {
                                             return SFCustomAlert(
+                                                title: AppStrings.WARNING,
                                                 message: AppStrings
                                                     .ERROR_MESSAGE_SOMETHING_WENT_WRONG,
                                                 exception: Exception(),
-                                                imagePath: AppStrings.SAD_FACE,
+                                                imagePath:
+                                                    AppStrings.EXCLAMATION_ICON,
                                                 actions: [
                                                   SFElevatedButton(
-                                                    childEB: const Text(
+                                                    childEB: Text(
                                                       AppStrings.TRY_AGAIN,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color:
                                                               AppColor.appBlue),
                                                     ),

@@ -52,10 +52,10 @@ class ChooseSmartCardList extends StatelessWidget {
                       child: Column(
                         children: [
                           Row(
-                            children: const [
+                            children:  [
                               Text(
                                 AppStrings.SMART_CARDS_UPPERCASE,
-                                style: TextStyle(color: AppColor.appTextGrey),
+                                style: const TextStyle(color: AppColor.appTextGrey),
                               )
                             ],
                           ),
@@ -72,9 +72,9 @@ class ChooseSmartCardList extends StatelessWidget {
                                         top: AppIntValues.TEN,
                                         bottom: AppIntValues.TEN),
                                     title: userStore.appAccounts[index].name,
-                                    trailingWidget: const Text(
+                                    trailingWidget:  Text(
                                       AppStrings.SHORT_CARD_NUMBER,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: AppColor.appPaleGrey),
                                     ),
                                     borderColor:
@@ -107,12 +107,12 @@ class ChooseSmartCardList extends StatelessWidget {
                               childEB: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
-                                  children: const [
+                                  children:  [
                                     Text(
                                       AppStrings.ADD_NEW_CARD,
-                                      style: TextStyle(color: AppColor.appBlue),
+                                      style: const TextStyle(color: AppColor.appBlue),
                                     ),
-                                    Icon(
+                                    const Icon(
                                       Icons.add,
                                       color: AppColor.appBlue,
                                     )
@@ -134,7 +134,7 @@ class ChooseSmartCardList extends StatelessWidget {
                             Expanded(
                               child: Observer(builder: (_) {
                                 return SFElevatedButton(
-                                  childEB: const Text(AppStrings.CONTINUE),
+                                  childEB:  Text(AppStrings.CONTINUE),
                                   onPressedEB: viewmodel.indexSmartCard != null
                                       ? () =>
                                           viewmodel.setSmartCardTextFieldText()

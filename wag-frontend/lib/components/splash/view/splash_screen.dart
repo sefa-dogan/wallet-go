@@ -44,11 +44,12 @@ class _SplashScreenState extends State<SplashScreen> {
                     barrierDismissible: false,
                     context: context,
                     builder: (context) => SFCustomAlert(
+                      title: AppStrings.WE_ARE_SAD,
                         message: AppStrings.LOGIN_EXCEPTION,
                         actions: [
                           SFElevatedButton(
-                            childEB: const Text(AppStrings.OK),
-                            onPressedEB: () => Get.offNamed(
+                            childEB:  Text(AppStrings.OK),
+                            onPressedEB: () => Get.offAllNamed(
                                 AppRoutes.LOGIN_SCREEN,
                                 arguments: [true,[
                                   viewmodel.username,
@@ -60,16 +61,16 @@ class _SplashScreenState extends State<SplashScreen> {
                   );
                 }
               }
-            : () => Get.offNamed(AppRoutes.ONBOARDING_SCREEN));
+            : () => Get.offAllNamed(AppRoutes.ONBOARDING_SCREEN));
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: AppColor.appBlue,
       body: Center(
         child: Text(AppStrings.APP_NAME,
-            style: TextStyle(color: Colors.white, fontSize: 25)),
+            style: const TextStyle(color: Colors.white, fontSize: 25)),
       ),
     );
   }

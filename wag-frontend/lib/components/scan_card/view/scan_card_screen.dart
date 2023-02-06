@@ -37,10 +37,10 @@ class _ScanCardScreenState extends State<ScanCardScreen> {
           child: Column(
             children: [
               Row(
-                children: const [
+                children:  [
                   Text(
                     AppStrings.SCAN_SCREEN_TEXT,
-                    style: TextStyle(color: AppColor.appWhite),
+                    style: const TextStyle(color: AppColor.appWhite),
                   ),
                 ],
               ),
@@ -56,7 +56,7 @@ class _ScanCardScreenState extends State<ScanCardScreen> {
                 ),
               )),
               SFElevatedButton(
-                childEB: const Text(AppStrings.ADD_IMAGE),
+                childEB:  Text(AppStrings.ADD_IMAGE),
                 onPressedEB: () {},
               )
             ],

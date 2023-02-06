@@ -1,5 +1,4 @@
 import 'package:email_validator/email_validator.dart';
-import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_text_button.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_text_field.dart';
@@ -68,37 +67,14 @@ class PersonalDetailsList extends StatelessWidget {
               },
             );
           }),
-          /*  Observer(builder: (_) {
-            return SFTextField(
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-              keyboardType: TextInputType.number,
-              onTap: () => viewmodel.showErrorMessageTcNo = true,
-              errorText:
-                  viewmodel.showErrorMessageTcNo && viewmodel.tcno.isEmpty
-                      ? AppStrings.ERROR_MESSAGE_TC_NO
-                      : null,
-              enabled: viewmodel.isEditing,
-              title: AppStrings.TC_NO,
-              maxLength: 11,
-              autofocus: false,
-              controller: viewmodel.isEditing
-                  ? null
-                  : MaskedTextController(
-                      text: viewmodel.tcno, mask: "00000000000"),
-              onChanged: (value) {
-                viewmodel.tcno = value;
-              },
-            );
-          }), */
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.all(AppIntValues.TEN),
               child: SFTextButton(
-                buttonChild: const Text(
+                buttonChild:  Text(
                   AppStrings.RESET_PASSWORD,
-                  style: TextStyle(
+                  style: const TextStyle(
                       decoration: TextDecoration.underline,
                       color: AppColor.appBlue),
                 ),

@@ -25,7 +25,7 @@ class ForgotPasswordForm extends StatelessWidget {
           onTap: () {},
         ),
         SFElevatedButton(
-          childEB: const Text(AppStrings.CONTINUE),
+          childEB:  Text(AppStrings.CONTINUE),
           onPressedEB: () {},
         )
       ],

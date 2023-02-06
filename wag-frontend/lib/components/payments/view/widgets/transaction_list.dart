@@ -20,7 +20,7 @@ class TransactionsList extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(AppIntValues.TEN),
           child: Row(
-            children: const [
+            children:  [
               Text(AppStrings.TRANSACTIONS),
             ],
           ),

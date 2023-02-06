@@ -40,12 +40,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           Column(
             children: [
-              const Expanded(
+              Expanded(
                   flex: 1,
                   child: Center(
                       child: Text(
                     AppStrings.CREATE_ACCOUNT,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ))),
               Expanded(
                 flex: 2,
@@ -65,11 +65,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(AppStrings.HAVE_ACCOUNT),
+                          Text(AppStrings.HAVE_ACCOUNT),
                           SFTextButton(
-                            buttonChild: const Text(
+                            buttonChild: Text(
                               AppStrings.LOGIN,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   decoration: TextDecoration.underline),
                             ),
@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           children: [
                             Expanded(
                               child: SFElevatedButton(
-                                childEB: const Text(AppStrings.REGISTER),
+                                childEB: Text(AppStrings.REGISTER),
                                 onPressedEB: () async {
                                   if (Tckn().check(viewmodel.tcno) &&
                                       EmailValidator.validate(
@@ -104,6 +104,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               context: context,
                                               builder: (context) {
                                                 return SFCustomAlert(
+                                                  title: AppStrings.WARNING,
                                                   message: AppStrings
                                                       .CONNECTION_IS_LOW,
                                                   exception: timeOutExp,
@@ -111,9 +112,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                       .EXCLAMATION_ICON,
                                                   actions: [
                                                     SFElevatedButton(
-                                                      childEB: const Text(
+                                                      childEB: Text(
                                                         AppStrings.OK,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             color: AppColor
                                                                 .appBlue),
                                                       ),
@@ -131,6 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               context: context,
                                               builder: (context) =>
                                                   SFCustomAlert(
+                                                      title: AppStrings.WARNING,
                                                       imagePath: AppStrings
                                                           .EXCLAMATION_ICON,
                                                       exception: exp,
@@ -138,9 +140,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                           .MISSING_INFORMATION,
                                                       actions: [
                                                     SFElevatedButton(
-                                                      childEB: const Text(
+                                                      childEB: Text(
                                                         AppStrings.OK,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             color: AppColor
                                                                 .appBlue),
                                                       ),
@@ -155,6 +157,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               context: context,
                                               builder: (context) {
                                                 return SFCustomAlert(
+                                                    title:
+                                                        AppStrings.WE_ARE_SAD,
                                                     message: AppStrings
                                                         .REGISTER_FAILED,
                                                     exception: Exception(),
@@ -162,9 +166,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                         AppStrings.SAD_FACE,
                                                     actions: [
                                                       SFElevatedButton(
-                                                        childEB: const Text(
+                                                        childEB: Text(
                                                           AppStrings.TRY_AGAIN,
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               color: AppColor
                                                                   .appBlue),
                                                         ),
@@ -188,11 +192,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         ? showDialog(
                                             context: context,
                                             builder: (context) => SFCustomAlert(
-                                                message: AppStrings.SUCCESSFUL,
+                                              title: AppStrings.SUCCESSFUL,
+                                                message: "",
                                                 actions: [
                                                   SFElevatedButton(
-                                                    childEB: const Text(
-                                                        AppStrings.LOGIN),
+                                                    childEB:
+                                                        Text(AppStrings.LOGIN),
                                                     onPressedEB: () =>
                                                         Get.offNamed(AppRoutes
                                                             .LOGIN_SCREEN),

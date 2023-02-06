@@ -17,10 +17,10 @@ class QuickActions extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: const [
+              children:  [
                 Text(
                   AppStrings.QUICK_ACTIONS,
-                  style: TextStyle(color: AppColor.appWhite),
+                  style: const TextStyle(color: AppColor.appWhite),
                 ),
               ],
             ),

@@ -47,8 +47,8 @@ class WhatIsCvvCvcCode extends StatelessWidget {
                 AppStrings.CARD_CVV,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: AppIntValues.TWENTY),
+             Padding(
+              padding: const EdgeInsets.only(bottom: AppIntValues.TWENTY),
               child: Text(AppStrings.CVV_CODE_IS),
             )
           ],

@@ -6,7 +6,8 @@ import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/locator.dart';
-import 'package:flutter_boilerplate/store/bottomappbar/sf_bottom_app_bar_store.dart';
+import 'package:flutter_boilerplate/store/bottomappbar/viewmodel/sf_bottom_app_bar_store.dart';
+import 'package:get/get.dart';
 
 class PaymentsScreen extends StatelessWidget {
   PaymentsScreen({super.key});
@@ -15,21 +16,23 @@ class PaymentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bottomAppBarviewmodel.index = 1;
+    debugPrint(Get.previousRoute);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           shadowColor: AppColor.appTransparent,
-          title: const Text(AppStrings.PAYMENTS,
-              style: TextStyle(color: AppColor.appBlack)),
+          title:  Text(AppStrings.PAYMENTS,
+              style: const TextStyle(color: AppColor.appBlack)),
           backgroundColor: AppColor.appWhite,
           bottom: SFTabBar().sfTabBar(),
         ),
         backgroundColor: AppColor.appWhite,
         bottomNavigationBar: SFBottomAppBar(),
         floatingActionButton: const SizedBox(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.centerDocked,
         body: Padding(
           padding: const EdgeInsets.all(AppIntValues.TWENTY),
           child: Column(

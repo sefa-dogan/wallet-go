@@ -49,9 +49,9 @@ class SuccessPaymentScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(AppStrings.SUCCESS_PAYMENT),
-                      const Text(
+                       Text(
                         AppStrings.YOUR_PAYMENT_WAS_SUCCESSFUL,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: AppColor.appWhite,
                             fontSize: AppIntValues.TWENTY),

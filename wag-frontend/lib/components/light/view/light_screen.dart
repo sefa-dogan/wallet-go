@@ -38,9 +38,9 @@ class LightScreen extends StatelessWidget {
             actions: Get.previousRoute == AppRoutes.PAYMENTS_SCREEN
                 ? [
                     SFTextButton(
-                      buttonChild: const Text(
+                      buttonChild:  Text(
                         AppStrings.DELETE_TEMPLATE,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: AppColor.appRed,
                             decoration: TextDecoration.underline),
                       ),
@@ -84,8 +84,8 @@ class LightScreen extends StatelessWidget {
                       child: SFElevatedButton(
                         size: const Size(0, AppIntValues.FIFTY),
                         childEB: Get.previousRoute == AppRoutes.PAYMENTS_SCREEN
-                            ? const Text(AppStrings.APPLY)
-                            : const Text(AppStrings.PAY),
+                            ?  Text(AppStrings.APPLY)
+                            :  Text(AppStrings.PAY),
                         onPressedEB: Get.previousRoute ==
                                 AppRoutes.PAYMENTS_SCREEN
                             ? () {}
@@ -98,12 +98,13 @@ class LightScreen extends StatelessWidget {
                                         showDialog(
                                           context: context,
                                           builder: (context) => SFCustomAlert(
+                                            title: AppStrings.WARNING,
                                               exception: nullExp,
                                               message: AppStrings.EMPTY_FIELD,
                                               actions: [
                                                 SFElevatedButton(
                                                   childEB:
-                                                      const Text(AppStrings.OK),
+                                                       Text(AppStrings.OK),
                                                   onPressedEB: () => Get.back(),
                                                 )
                                               ],
@@ -114,13 +115,14 @@ class LightScreen extends StatelessWidget {
                                         showDialog(
                                           context: context,
                                           builder: (context) => SFCustomAlert(
+                                            title: AppStrings.WE_ARE_SAD,
                                               exception: balanceExp,
                                               message: AppStrings
                                                   .INSUFFICIENT_BALANCE,
                                               actions: [
                                                 SFElevatedButton(
                                                   childEB:
-                                                      const Text(AppStrings.OK),
+                                                       Text(AppStrings.OK),
                                                   onPressedEB: () => Get.back(),
                                                 )
                                               ],
@@ -131,12 +133,13 @@ class LightScreen extends StatelessWidget {
                                         showDialog(
                                           context: context,
                                           builder: (context) => SFCustomAlert(
+                                            title: AppStrings.WARNING,
                                               exception: invalidIbanExp,
                                               message: AppStrings.INVALID_IBAN,
                                               actions: [
                                                 SFElevatedButton(
                                                   childEB:
-                                                      const Text(AppStrings.OK),
+                                                       Text(AppStrings.OK),
                                                   onPressedEB: () => Get.back(),
                                                 )
                                               ],
@@ -147,13 +150,14 @@ class LightScreen extends StatelessWidget {
                                         showDialog(
                                           context: context,
                                           builder: (context) => SFCustomAlert(
+                                            title:AppStrings.WARNING,
                                               exception: Exception(),
                                               message: AppStrings
                                                   .ERROR_MESSAGE_SOMETHING_WENT_WRONG,
                                               actions: [
                                                 SFElevatedButton(
                                                   childEB:
-                                                      const Text(AppStrings.OK),
+                                                       Text(AppStrings.OK),
                                                   onPressedEB: () => Get.back(),
                                                 )
                                               ],

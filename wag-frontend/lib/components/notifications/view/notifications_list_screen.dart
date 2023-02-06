@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/components/atomic_widgets/sf_app_bar.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_bottom_app_bar.dart';
 import 'package:flutter_boilerplate/components/notifications/view/widgets/notifications_list_item.dart';
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
-import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
-import 'package:flutter_boilerplate/store/bottomappbar/sf_bottom_app_bar_store.dart';
-import 'package:get/get.dart';
+import 'package:flutter_boilerplate/store/bottomappbar/viewmodel/sf_bottom_app_bar_store.dart';
 
 // ignore: must_be_immutable
 class NotificationsListScreen extends StatelessWidget {
@@ -26,8 +23,8 @@ class NotificationsListScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         shadowColor: AppColor.appTransparent,
-        title: const Text(AppStrings.NOTIFICATIONS,
-            style: TextStyle(color: AppColor.appBlack)),
+        title:  Text(AppStrings.NOTIFICATIONS,
+            style: const TextStyle(color: AppColor.appBlack)),
         backgroundColor: AppColor.appWhite,
       ),
       backgroundColor: AppColor.appWhite,

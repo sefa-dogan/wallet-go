@@ -36,7 +36,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 Expanded(
                   child: SFElevatedButton(
                     size: const Size(0, AppIntValues.FIFTY),
-                    childEB: const Text(AppStrings.APPLY),
+                    childEB:  Text(AppStrings.APPLY),
                     onPressedEB: () {},
                   ),
                 ),

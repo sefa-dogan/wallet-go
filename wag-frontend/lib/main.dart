@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/localizations/app_localizations.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
@@ -24,7 +25,7 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   // await getAvaibleCameras();
-  prefs = await SharedPreferences.getInstance();
+  SharedPref.prefs = await SharedPreferences.getInstance();
 
   runApp(MyApp());
 }
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
                         top: Radius.circular(AppIntValues.TEN))))),
         initialRoute: AppRoutes.SPLASH_SCREEN,
         getPages: appRouter,
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: AppLocalizations.localizationsDelegate,
+        localeResolutionCallback: AppLocalizations.localeResolutionCallback,
         builder: EasyLoading.init(),
       );
     });

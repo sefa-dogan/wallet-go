@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
-import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 
 // ignore: must_be_immutable
 class SFCustomAlert extends StatelessWidget {
   SFCustomAlert({
     super.key,
     this.exception,
+    required this.title,
     required this.message,
     required this.actions,
     required this.imagePath,
@@ -16,6 +16,7 @@ class SFCustomAlert extends StatelessWidget {
   String imagePath;
   String message;
   List<Widget> actions;
+  String title;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -29,7 +30,7 @@ class SFCustomAlert extends StatelessWidget {
             height: MediaQuery.of(context).size.width / 5,
             child: Image.asset(imagePath),
           ),
-          const Text(AppStrings.WE_ARE_SAD)
+          Text(title)
         ],
       ),
       content: Row(

@@ -32,7 +32,7 @@ class EditMySmartCard extends StatelessWidget {
                       return AlertDialog(
                         content: Row(
                           children: [
-                            const Text("${AppStrings.IBAN}: "),
+                             Text("${AppStrings.IBAN}: "),
                             Expanded(
                               child: TextField(
                                 decoration: const InputDecoration(
@@ -87,7 +87,7 @@ class EditMySmartCard extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: SFElevatedButton(
                   size: Size(MediaQuery.of(context).size.width, 50),
-                  childEB: const Text(AppStrings.APPLY),
+                  childEB:  Text(AppStrings.APPLY),
                   onPressedEB: () async {
                     Get.showOverlay(
                         asyncFunction: () async {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_gesture_row.dart';
-import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:get/get.dart';

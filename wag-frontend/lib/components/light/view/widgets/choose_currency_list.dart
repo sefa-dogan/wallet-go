@@ -65,7 +65,7 @@ class ChooseCurrencyList extends StatelessWidget {
                         return SFElevatedButton(
                           size:
                               const Size(AppIntValues.ZERO, AppIntValues.FIFTY),
-                          childEB: const Text(AppStrings.CONTINUE),
+                          childEB:  Text(AppStrings.CONTINUE),
                           onPressedEB: viewmodel.indexCurrency != null
                               ? () {
                                   viewmodel.selectedCurrency =

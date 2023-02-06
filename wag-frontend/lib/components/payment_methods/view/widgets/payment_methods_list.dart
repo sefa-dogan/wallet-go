@@ -67,7 +67,7 @@ class PaymentMethodsList extends StatelessWidget {
                     padding: const EdgeInsets.all(AppIntValues.TEN),
                     child: SFElevatedButton(
                       size: const Size(0, AppIntValues.FIFTY),
-                      childEB: const Text(AppStrings.APPLY),
+                      childEB:  Text(AppStrings.APPLY),
                       onPressedEB: () {},
                     ),
                   ),

@@ -52,11 +52,11 @@ class OnBoardingScreen extends StatelessWidget {
               child: Row(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  const Expanded(
+                   Expanded(
                     child: Text(
                       AppStrings.INTRO_SCREEN_TITLE1,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 18),
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
                 ],
@@ -77,7 +77,7 @@ class OnBoardingScreen extends StatelessWidget {
                       );
                       // Get.toNamed(AppRoutes.REGISTER_SCREEN);
                     },
-                    childEB: const Text(AppStrings.REGISTER),
+                    childEB:  Text(AppStrings.REGISTER),
                   )),
                 ],
               ),
@@ -88,9 +88,9 @@ class OnBoardingScreen extends StatelessWidget {
                   onPressedFunc: () {
                     Get.toNamed(AppRoutes.LOGIN_SCREEN);
                   },
-                  buttonChild: const Text(
+                  buttonChild:  Text(
                     AppStrings.LOGIN,
-                    style: TextStyle(color: AppColor.appBlue),
+                    style: const TextStyle(color: AppColor.appBlue),
                   )),
             ),
           ],

@@ -16,10 +16,10 @@ class TemplateList extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: const [
+          children:  [
             Text(
               AppStrings.TEMPLATES,
-              style: TextStyle(fontSize: AppIntValues.FIFTEEN),
+              style: const TextStyle(fontSize: AppIntValues.FIFTEEN),
             ),
           ],
         ),

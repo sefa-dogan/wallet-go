@@ -19,10 +19,10 @@ abstract class _SplashViewModelBase with Store {
 
   String username = "";
   String password = "";
-
+//TODO çıkış yaptıktan sonra prefs ten gelen değerin "" olması gerekiyor ve username ve password e "" atması gerekiyor bunu kontrol et.
   bool isLoggedIn() {
-    username = prefs.getString("username");
-    password = prefs.getString("password");
+    username = SharedPref.prefs.getString("username")!;
+    password = SharedPref.prefs.getString("password")!;
 
     if (username != "" && password != "") {
       return true;
@@ -109,7 +109,7 @@ abstract class _SplashViewModelBase with Store {
         userStore.appAccountIds = response.data;
         await userStore.getAppAccounts();
         await userStore.getLastTransactions();
-        Get.toNamed(AppRoutes.HOME_SCREEN);
+        Get.offAllNamed(AppRoutes.HOME_SCREEN);
       }
     } catch (error) {
       debugPrint(error.toString());

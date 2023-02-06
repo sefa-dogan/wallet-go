@@ -14,7 +14,7 @@ import 'package:flutter_boilerplate/components/personal_details/viewmodel/person
 import 'package:flutter_boilerplate/components/register/viewmodel/register_viewmodel.dart';
 import 'package:flutter_boilerplate/components/splash/view/splash_screen.dart';
 import 'package:flutter_boilerplate/components/splash/viewmodel/splash_viewmodel.dart';
-import 'package:flutter_boilerplate/store/bottomappbar/sf_bottom_app_bar_store.dart';
+import 'package:flutter_boilerplate/store/bottomappbar/viewmodel/sf_bottom_app_bar_store.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 import 'package:get_it/get_it.dart';
 

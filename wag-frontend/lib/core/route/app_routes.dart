@@ -17,4 +17,6 @@ class AppRoutes {
   static const String SCAN_CARD_SCREEN = "/scan_card_screen";
   static const String SUCCESS_PAYMENT_SCREEN = "/success_payment_screen";
   static const String FORGOT_PASSWORD_SCREEN = "/forgot_password_screen";
+
+  static const String SETTINGS_VIEW = "/deneme";
 }

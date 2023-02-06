@@ -60,7 +60,7 @@ class _DateState extends State<Date> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(AppStrings.CHOOSE_DATE),
+                                 Text(AppStrings.CHOOSE_DATE),
                                 SFIconButton(
                                   iconColor: AppColor.appPaleGrey,
                                   iconIconButton: Icons.close,

@@ -1,3 +1,4 @@
+import 'package:flutter_boilerplate/core/constants/shared_preferences.dart';
 import 'package:mobx/mobx.dart';
 part 'language_list_viewmodel.g.dart';
 
@@ -6,6 +7,23 @@ class LanguageListViewModel = _LanguageListViewModelBase
     with _$LanguageListViewModel;
 
 abstract class _LanguageListViewModelBase with Store {
+  List<List<String>> languages = [
+    ["Turkish", "tr", "TR"],
+    ["English", "en", "US"]
+  ];
+
   @observable
   int selectedItemIndex = 0;
+  @action
+  getSelectedLanguageIndex() {
+    List<String?>? selectedLanguage =
+        SharedPref.prefs.getStringList("appLanguage");
+    if (selectedLanguage != null) {
+      for (var language in languages) {
+        selectedItemIndex = language.contains(selectedLanguage[0])
+            ? languages.indexOf(language)
+            : 0;
+      }
+    }
+  }
 }

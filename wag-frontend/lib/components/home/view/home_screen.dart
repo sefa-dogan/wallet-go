@@ -8,7 +8,7 @@ import 'package:flutter_boilerplate/components/home/viewmodel/home_viewmodel.dar
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/locator.dart';
-import 'package:flutter_boilerplate/store/bottomappbar/sf_bottom_app_bar_store.dart';
+import 'package:flutter_boilerplate/store/bottomappbar/viewmodel/sf_bottom_app_bar_store.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 
 class HomeScreen extends StatelessWidget {

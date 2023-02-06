@@ -111,8 +111,8 @@ abstract class _LoginViewModelBase with Store {
         userStore.appAccountIds = response.data;
         await userStore.getAppAccounts();
         await userStore.getLastTransactions();
-        await prefs.setString("username", username);
-        await prefs.setString("password", password);
+        await SharedPref.prefs.setString("username", username);
+        await SharedPref.prefs.setString("password", password);
         Get.offAllNamed(AppRoutes.HOME_SCREEN);
       }
     } catch (error) {

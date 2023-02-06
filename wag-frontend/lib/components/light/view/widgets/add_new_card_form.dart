@@ -64,7 +64,7 @@ class AddNewCardForm extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     bottom: AppIntValues.TEN),
                                 child: Row(
-                                  children: const [
+                                  children:  [
                                     Text(AppStrings.DIGITS_NUMBER),
                                   ],
                                 ),
@@ -96,8 +96,8 @@ class AddNewCardForm extends StatelessWidget {
                                   //Expiration date column
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(
+                                     Padding(
+                                      padding: const EdgeInsets.only(
                                           bottom: AppIntValues.TEN),
                                       child: Text(AppStrings.EXPIRATION_DATE),
                                     ),
@@ -120,8 +120,8 @@ class AddNewCardForm extends StatelessWidget {
                                   //CVV / CVC column
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(
+                                     Padding(
+                                      padding: const EdgeInsets.only(
                                           bottom: AppIntValues.TEN),
                                       child: Text(AppStrings.CVV_CVC),
                                     ),
@@ -171,7 +171,7 @@ class AddNewCardForm extends StatelessWidget {
                                   },
                                 );
                               }),
-                              const Text(AppStrings.SAVE_THIS_PAYMENT_METHOD)
+                               Text(AppStrings.SAVE_THIS_PAYMENT_METHOD)
                             ],
                           ),
                         ],
@@ -184,7 +184,7 @@ class AddNewCardForm extends StatelessWidget {
                         child: SFElevatedButton(
                           size: Size(MediaQuery.of(context).size.width,
                               AppIntValues.FIFTY),
-                          childEB: const Text(AppStrings.ADD),
+                          childEB:  Text(AppStrings.ADD),
                           onPressedEB: () {},
                         ),
                       ),

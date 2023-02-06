@@ -7,7 +7,7 @@ import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/shared_preferences.dart';
 import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
-import 'package:flutter_boilerplate/store/bottomappbar/sf_bottom_app_bar_store.dart';
+import 'package:flutter_boilerplate/store/bottomappbar/viewmodel/sf_bottom_app_bar_store.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:get/get.dart';
@@ -64,7 +64,7 @@ class ProfileListScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: Column(
-                              children: const [
+                              children:  [
                                 CircleAvatar(
                                   backgroundImage: AssetImage(
                                       AppStrings.USER_PROFILE_PICTURE),
@@ -120,14 +120,14 @@ class ProfileListScreen extends StatelessWidget {
                   curve: Curves.decelerate,
                   scaleFactor: 0.6,
                   onTap: () async {
-                    await prefs.setString("username", "");
-                    await prefs.setString("password", "");
+                    await SharedPref.prefs.setString("username", "");
+                    await SharedPref.prefs.setString("password", "");
                     Get.offAllNamed(AppRoutes.LOGIN_SCREEN);
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Padding(
+                    children:  [
+                      const Padding(
                         padding: EdgeInsets.only(right: 10),
                         child: Icon(
                           Icons.logout_outlined,
@@ -136,7 +136,7 @@ class ProfileListScreen extends StatelessWidget {
                       ),
                       Text(
                         AppStrings.SIGN_OUT,
-                        style: TextStyle(color: AppColor.appBlue),
+                        style: const TextStyle(color: AppColor.appBlue),
                       ),
                     ],
                   ),

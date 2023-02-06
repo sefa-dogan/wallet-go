@@ -1,8 +1,5 @@
 import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
-import 'package:get/get_connect/sockets/src/socket_notifier.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
@@ -60,7 +57,8 @@ abstract class _CreatePdfViewModelBase with Store {
     await getSenderUserInfoId(transaction.walletId);
     await getRecipientWalletId(transaction.toAccountId);
     document = PdfDocument();
-    final PdfFont font = PdfTrueTypeFont(await _readFontData(), 12);
+    final PdfFont font =
+        PdfTrueTypeFont(await _readFontData(), 12, style: PdfFontStyle.bold);
 
     final page = document.pages.add();
     PdfGrid grid = PdfGrid();
@@ -74,25 +72,30 @@ abstract class _CreatePdfViewModelBase with Store {
 
     row = grid.rows.add();
     row.cells[0].value =
-        "Gonderenin ismi: ${senderUserInfo.name.toUpperCase()} ${senderUserInfo.surname.toUpperCase()}";
-    row.height = 50;
+        "Gönderenin ismi: ${senderUserInfo.name.toUpperCase()} ${senderUserInfo.surname.toUpperCase()}";
+    row.height = 30;
     row = grid.rows.add();
-    row.cells[0].value = "Gonderenin IBAN:  ${transaction.fromAccountId}";
-    row.height = 50;
+    row.cells[0].value = "Gönderenin IBAN:  ${transaction.fromAccountId}";
+    row.height = 30;
 
     row = grid.rows.add();
     row.cells[0].value =
-        "Alicinin ismi: ${recipientUserInfo.name.toUpperCase()} ${recipientUserInfo.surname.toUpperCase()}";
+        "Alıcının ismi: ${recipientUserInfo.name.toUpperCase()} ${recipientUserInfo.surname.toUpperCase()}";
 
-    row.height = 50;
-
-    row = grid.rows.add();
-    row.cells[0].value = "Alicinin IBAN: ${transaction.toAccountId}";
-    row.height = 50;
+    row.height = 30;
 
     row = grid.rows.add();
-    row.cells[0].value = "Gonderilen tutar: \$${transaction.amount}";
-    row.height = 50;
+    row.cells[0].value = "Alıcının IBAN: ${transaction.toAccountId}";
+    row.height = 30;
+
+    row = grid.rows.add();
+    row.cells[0].value = "Gönderilen tutar: \$${transaction.amount}";
+    row.height = 30;
+
+    row = grid.rows.add();
+    row.cells[0].value = "İşlem tarihi: ${DateFormat("dd/MM/yyyy hh:mm:ss").format(DateTime.parse(transaction.transactionDate))}";
+    row.height = 30;
+
 
     grid.draw(page: page, bounds: const Rect.fromLTWH(0, 0, 0, 0));
     List<int> bytes = await document.save();

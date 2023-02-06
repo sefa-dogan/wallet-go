@@ -21,9 +21,9 @@ class AppAccountList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+             Text(
               AppStrings.CHOOSE_CARD,
-              style: TextStyle(fontSize: AppIntValues.FIFTEEN),
+              style: const TextStyle(fontSize: AppIntValues.FIFTEEN),
             ),
             IconButton(
               icon: const Icon(Icons.filter_list),

@@ -15,19 +15,25 @@ class PaymentMethodsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.appWhite,
-      appBar: SFAppBar().appBar(
-        onPressedLeading: () => Get.offNamed(AppRoutes.PROFILE_SCREEN),
-        AppStrings.PAYMENT_METHODS,
-        actions: [
-          SFIconButton(
-              iconIconButton: Icons.edit,
-              iconColor: AppColor.appBlack,
-              onPressedIconButton: viewmodel.isPressedEdit)
-        ],
+    return WillPopScope(
+      onWillPop: () {
+        Get.offNamed(AppRoutes.PROFILE_SCREEN);
+        return Future.value(true);
+      },
+      child: Scaffold(
+        backgroundColor: AppColor.appWhite,
+        appBar: SFAppBar().appBar(
+          onPressedLeading: () => Get.offNamed(AppRoutes.PROFILE_SCREEN),
+          AppStrings.PAYMENT_METHODS,
+          actions: [
+            SFIconButton(
+                iconIconButton: Icons.edit,
+                iconColor: AppColor.appBlack,
+                onPressedIconButton: viewmodel.isPressedEdit)
+          ],
+        ),
+        body: PaymentMethodAndMySmartCards(),
       ),
-      body: PaymentMethodAndMySmartCards(),
     );
   }
 }

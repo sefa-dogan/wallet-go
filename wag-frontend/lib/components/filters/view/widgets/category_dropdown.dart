@@ -18,9 +18,9 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
   Widget build(BuildContext context) {
     return SFDropdownButtonFormField(
         title: "Category",
-        hint: const Text(
+        hint:  Text(
           AppStrings.CHOOSE_THE_CATEGORY,
-          style: TextStyle(color: AppColor.appPaleGrey),
+          style: const TextStyle(color: AppColor.appPaleGrey),
         ),
         items: [
           {const Text("1. category"): 20},

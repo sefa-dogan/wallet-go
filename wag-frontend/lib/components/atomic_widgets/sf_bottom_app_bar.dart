@@ -6,7 +6,7 @@ import 'package:flutter_boilerplate/components/floating_action_button/view/sf_fl
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_icon_button.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/route/app_routes.dart';
-import 'package:flutter_boilerplate/store/bottomappbar/sf_bottom_app_bar_store.dart';
+import 'package:flutter_boilerplate/store/bottomappbar/viewmodel/sf_bottom_app_bar_store.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
@@ -17,13 +17,6 @@ class SFBottomAppBar extends StatelessWidget {
 
   final viewmodel = locator<SFBottomAppBarStore>();
   final userStore = locator<UserStore>();
-
-  // List routes = [
-  //   () => Get.toNamed(AppRoutes.HOME_SCREEN),
-  //   () => Get.toNamed(AppRoutes.PAYMENTS_SCREEN),
-  //   () => Get.toNamed(AppRoutes.NOTIFICATIONS_LIST_SCREEN),
-  //   () => Get.toNamed(AppRoutes.PROFILE_SCREEN)
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +46,7 @@ class SFBottomAppBar extends StatelessWidget {
                           onPressedIconButton: () async {
                             await userStore.getLastTransactions();
 
-                            Get.offNamed(AppRoutes.HOME_SCREEN);
+                            Get.offAllNamed(AppRoutes.HOME_SCREEN);
                           },
                         ),
                         Text(AppStrings.HOME,
@@ -73,7 +66,7 @@ class SFBottomAppBar extends StatelessWidget {
                               ? null
                               : AppColor.appPaleGrey,
                           onPressedIconButton: () {
-                            Get.offNamed(AppRoutes.PAYMENTS_SCREEN);
+                            Get.offAllNamed(AppRoutes.PAYMENTS_SCREEN);
                           },
                         ),
                         Text(AppStrings.PAYMENTS,
@@ -123,7 +116,8 @@ class SFBottomAppBar extends StatelessWidget {
                               ? null
                               : AppColor.appPaleGrey,
                           onPressedIconButton: () {
-                            Get.offNamed(AppRoutes.NOTIFICATIONS_LIST_SCREEN);
+                            Get.offAllNamed(
+                                AppRoutes.NOTIFICATIONS_LIST_SCREEN);
                           },
                         ),
                         Text(AppStrings.NOTIFICATIONS,
@@ -141,7 +135,7 @@ class SFBottomAppBar extends StatelessWidget {
                               ? null
                               : AppColor.appPaleGrey,
                           onPressedIconButton: () {
-                            Get.offNamed(AppRoutes.PROFILE_SCREEN);
+                            Get.offAllNamed(AppRoutes.PROFILE_SCREEN);
                           },
                         ),
                         Text(

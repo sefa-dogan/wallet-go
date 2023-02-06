@@ -90,9 +90,9 @@ class LoginForm extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SFTextButton(
-                buttonChild: const Text(
+                buttonChild:  Text(
                   AppStrings.FORGOT_PASSWORD,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.black,
                       decoration: TextDecoration.underline),
                 ),

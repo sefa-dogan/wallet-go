@@ -19,12 +19,12 @@ class CreateTemplate extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(AppStrings.RECTANGLE),
-              const Padding(
-                padding: EdgeInsets.only(
+               Padding(
+                padding: const EdgeInsets.only(
                     top: AppIntValues.THIRTY, bottom: AppIntValues.THIRTY),
                 child: Text(
                   AppStrings.YOU_DONT_HAVE_TEMP,
-                  style: TextStyle(color: AppColor.appTextGrey),
+                  style: const TextStyle(color: AppColor.appTextGrey),
                 ),
               ),
               Row(
@@ -33,7 +33,7 @@ class CreateTemplate extends StatelessWidget {
                   Expanded(
                     child: SFElevatedButton(
                       size: const Size(0, AppIntValues.FIFTY),
-                      childEB: const Text(AppStrings.CREATE_NEW),
+                      childEB:  Text(AppStrings.CREATE_NEW),
                       onPressedEB: () {
                         // Get.toNamed(AppRoutes.LIGHT_SCREEN);
                       },

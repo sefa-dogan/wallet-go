@@ -43,10 +43,10 @@ class ChoosePaymentMethodList extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           top: AppIntValues.TEN, bottom: AppIntValues.TEN),
                       child: Row(
-                        children: const [
+                        children:  [
                           Text(
                             AppStrings.EXISTING_CARDS,
-                            style: TextStyle(color: AppColor.appTextGrey),
+                            style: const TextStyle(color: AppColor.appTextGrey),
                           ),
                         ],
                       ),

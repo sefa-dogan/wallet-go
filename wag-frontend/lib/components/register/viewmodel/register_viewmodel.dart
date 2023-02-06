@@ -57,7 +57,7 @@ abstract class _RegisterViewModelBase with Store {
   bool showErrorMessagePassword = false;
 
   @observable
-  bool hidePassword = false;
+  bool hidePassword = true;
   @observable
   bool inProgress = false;
 

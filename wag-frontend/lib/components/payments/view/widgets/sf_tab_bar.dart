@@ -17,7 +17,7 @@ class SFTabBar {
         // splashBorderRadius: BorderRadius.all(Radius.circular(10)),
         unselectedLabelColor: AppColor.appBlue,
         labelColor: AppColor.appWhite,
-        tabs: const [
+        tabs:  [
           Tab(
             child: Text(AppStrings.TRANSACTIONS),
           ),

@@ -13,9 +13,9 @@ class PaymentDetailsForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+         Text(
           AppStrings.PAYMENT_DETAILS,
-          style: TextStyle(
+          style: const TextStyle(
               fontWeight: FontWeight.bold, fontSize: AppIntValues.TWENTY),
         ),
         PaymentDetailsFormItem(

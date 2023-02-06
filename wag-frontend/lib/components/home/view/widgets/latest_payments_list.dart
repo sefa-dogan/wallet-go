@@ -36,18 +36,18 @@ class LatestPaymentsList extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                   Text(
                     AppStrings.LATEST_PAYMENTS,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
                       color: AppColor.appTitleBlack,
                     ),
                   ),
                   SFTextButton(
-                    buttonChild: const Text(
+                    buttonChild:  Text(
                       AppStrings.ALL,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 8,
                         fontWeight: FontWeight.bold,
                         color: AppColor.appTitleBlack,

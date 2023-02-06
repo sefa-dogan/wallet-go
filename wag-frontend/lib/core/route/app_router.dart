@@ -114,4 +114,8 @@ List<GetPage> appRouter = <GetPage>[
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),
+  // GetPage(
+  //   name: AppRoutes.SETTINGS_VIEW,
+  //   page: () => SettingsView(),
+  // )
 ];

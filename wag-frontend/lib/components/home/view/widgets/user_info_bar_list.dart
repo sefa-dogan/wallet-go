@@ -15,7 +15,7 @@ class UserInfoBar extends StatelessWidget {
       padding: const EdgeInsets.only(left: AppIntValues.TWENTY),
       child: Row(
         children: [
-          const CircleAvatar(
+           CircleAvatar(
             radius: AppIntValues.FOURTY,
             backgroundImage: AssetImage(AppStrings.USER_PROFILE_PICTURE),
           ),

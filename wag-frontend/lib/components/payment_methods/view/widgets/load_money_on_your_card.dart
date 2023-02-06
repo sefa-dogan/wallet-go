@@ -52,10 +52,11 @@ class LoadMoneyOnYourCard extends StatelessWidget {
                               builder: (context) {
                                 viewmodel.isCompleted = false;
                                 return SFCustomAlert(
+                                  title: AppStrings.SUCCESSFUL,
                                     message: "Başarıyla para yüklendi",
                                     actions: [
                                       SFElevatedButton(
-                                        childEB: const Text(AppStrings.OK),
+                                        childEB:  Text(AppStrings.OK),
                                         onPressedEB: () => Get.back(),
                                       )
                                     ],

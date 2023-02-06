@@ -18,9 +18,9 @@ class SmartCardsList extends StatelessWidget {
           child: Row(
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              const Text(
+               Text(
                 AppStrings.SMART_CARDS,
-                style: TextStyle(color: AppColor.appWhite),
+                style: const TextStyle(color: AppColor.appWhite),
               ),
             ],
           ),
