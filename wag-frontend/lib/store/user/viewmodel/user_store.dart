@@ -4,6 +4,7 @@ import 'package:flutter_boilerplate/client.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/store/user/model/app_account.dart';
 import 'package:flutter_boilerplate/store/user/model/app_user.dart';
+import 'package:flutter_boilerplate/store/user/model/template.dart';
 import 'package:flutter_boilerplate/store/user/model/transactions.dart';
 import 'package:flutter_boilerplate/store/user/model/user_info.dart';
 import 'package:flutter_boilerplate/store/user/model/wallet.dart';
@@ -20,6 +21,8 @@ abstract class _UserStoreBase with Store {
   late List<AppAccount> appAccounts = [];
   late List<Transaction> transactions = [];
   late List<Transaction> lastTransactions = [];
+  @observable
+  late List<Template> templates = [];
 
   String appUserId = ""; // end pointten çekilen AppUser idsi burada tutulur
   String userInfoId = ""; // endpointten çekilen UserInfo idsi burada tutulur
@@ -37,7 +40,6 @@ abstract class _UserStoreBase with Store {
     }
   }
 
-  ///adsfdsfsdf
   Future getUserInfo() async {
     var response = await dioClient.get(AppStrings.USERS_INFO_PATH + userInfoId);
     if (response.statusCode == 200) {
@@ -53,7 +55,6 @@ abstract class _UserStoreBase with Store {
     var response = await dioClient.get(AppStrings.WALLETS_PATH + walletId);
     if (response.statusCode == 200) {
       Map<String, dynamic> pulledData = response.data;
-      debugPrint(pulledData["balance"].runtimeType.toString());
       wallet = Wallet.fromMap(pulledData);
       var value = double.tryParse(pulledData['balance'].runtimeType == int
           ? "${pulledData['balance']}.00"
@@ -103,9 +104,16 @@ abstract class _UserStoreBase with Store {
     }
   }
 
-  // matchTransactionsAndAppAccounts() {
-  //   var result = appAccounts.firstWhere((element) {
-  //     element.id == "sfgsgsd";
-  //   });
-  // }
+  @action
+  Future getTemplates() async {
+    templates = [];
+    var response =
+        await dioClient.get(AppStrings.GET_TEMPLATES_PATH + wallet.id);
+    if (response.statusCode == 200) {
+      templates =
+          (response.data as List).map((e) => Template.fromMap(e)).toList();
+    } else {
+      debugPrint(AppStrings.ERROR_MESSAGE_SOMETHING_WENT_WRONG);
+    }
+  }
 }

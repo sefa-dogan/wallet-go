@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_text_field.dart';
 import 'package:flutter_boilerplate/components/light/view/widgets/choose_currency_list.dart';
@@ -23,6 +25,7 @@ class _AmountDropDownState extends State<AmountDropDown> {
 
   @override
   Widget build(BuildContext context) {
+    bool isOnTapped = false;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,23 +39,34 @@ class _AmountDropDownState extends State<AmountDropDown> {
                     return SFTextField(
                       errorText: viewmodel.showAmountErrorText &&
                               (viewmodel.amount == null ||
-                                  // ignore: unrelated_type_equality_checks
                                   viewmodel.amount == "")
                           ? AppStrings.ERROR_MESSAGE_AMOUNT
                           : null,
                       title: AppStrings.AMOUNT,
                       autofocus: false,
                       readOnly: false,
+                      controller:
+                          viewmodel.currentTemplate != null && !isOnTapped
+                              ? TextEditingController(
+                                  text: viewmodel.amount.toString())
+                              : null,
                       border: OutlineInputBorder(
                           borderSide:
                               const BorderSide(color: AppColor.appTextGrey),
                           borderRadius: BorderRadius.circular(radius)),
                       hintText: AppStrings.ENTER_PAYMENT_AMOUNT,
                       onChanged: (value) {
-                        viewmodel.amount =
-                            value != "" ? double.parse(value) : null;
+                        try {
+                          viewmodel.amount =
+                              value != "" ? double.parse(value) : null;
+                        } catch (e) {
+                          viewmodel.amount = null;
+                        }
                       },
-                      onTap: () => viewmodel.showAmountErrorText = true,
+                      onTap: () {
+                        viewmodel.showAmountErrorText = true;
+                        isOnTapped = true;
+                      },
                       keyboardType: TextInputType.number,
                     );
                   })),

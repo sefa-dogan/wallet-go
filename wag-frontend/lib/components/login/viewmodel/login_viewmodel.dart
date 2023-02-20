@@ -110,6 +110,7 @@ abstract class _LoginViewModelBase with Store {
       if (response.statusCode == 200) {
         userStore.appAccountIds = response.data;
         await userStore.getAppAccounts();
+        await userStore.getTemplates();
         await userStore.getLastTransactions();
         await SharedPref.prefs.setString("username", username);
         await SharedPref.prefs.setString("password", password);

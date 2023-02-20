@@ -16,6 +16,6 @@ namespace WalletGo.Entities
         public Guid WalletId { get; set; }
         public double Amount { get; set; }
         public AppAccount Account { get; set; }
-        public Transaction Transactions { get; set; }
+        //public Transaction Transactions { get; set; }
     }
 }

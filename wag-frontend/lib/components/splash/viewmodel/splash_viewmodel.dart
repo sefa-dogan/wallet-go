@@ -94,6 +94,7 @@ abstract class _SplashViewModelBase with Store {
       if (response.statusCode == 200) {
         userStore.walletId = response.data;
         await userStore.getWallet();
+        await userStore.getTemplates();
         await getAppAccountIds();
       }
     } catch (error) {

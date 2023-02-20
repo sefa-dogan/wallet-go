@@ -14,5 +14,7 @@ namespace WalletGo.Entities
         public Guid WalletId { get; set; }
         public Wallet Wallet { get; set; }
         public List<Transaction> Transactions { get; set; }
+        public List<Template> Templates { get; set; }
+
     }
 }

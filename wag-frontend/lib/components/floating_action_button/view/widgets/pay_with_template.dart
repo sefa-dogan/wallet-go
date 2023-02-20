@@ -7,15 +7,16 @@ import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
+import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class PayWithTemplate extends StatelessWidget {
   PayWithTemplate({super.key});
+  final userStore = locator<UserStore>();
   final radius = AppIntValues.TEN;
   final viewmodel = locator<SFFloatingActionButtonViewModel>();
-  List cards = ["", "", ""];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +30,8 @@ class PayWithTemplate extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.arrow_back_ios_new),
                   onPressed: () => viewmodel.controller.previousPage(
-                      duration: const Duration(seconds: 1), curve: Curves.easeInOut),
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.easeInOut),
                 ),
                 SFText(text: AppStrings.PAY_WITH_TEMPLATE)
               ]),
@@ -49,7 +51,7 @@ class PayWithTemplate extends StatelessWidget {
                 Column(
                   children: [
                     Row(
-                      children:  [
+                      children: [
                         Text(
                           AppStrings.TEMPLATES,
                           style: const TextStyle(color: AppColor.appPaleGrey),
@@ -59,41 +61,45 @@ class PayWithTemplate extends StatelessWidget {
                     SizedBox(
                         height: 200,
                         child: ListView.builder(
-                          itemCount: cards.length,
+                          itemCount: userStore.templates.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.only(
                                   bottom: AppIntValues.FIVE),
                               child: Observer(builder: (_) {
-                                return ListTile(
-                                  onTap: () {
-                                    viewmodel.templateIndex = index;
-                                  },
-                                  iconColor: AppColor.appAmber,
-                                  tileColor: AppColor.appGrey,
-                                  shape: RoundedRectangleBorder(
-                                      side: viewmodel.templateIndex == index
-                                          ? const BorderSide(
-                                              color: AppColor.appBlue)
-                                          : BorderSide.none,
-                                      borderRadius:
-                                          BorderRadius.circular(radius)),
-                                  leading: const Icon(Icons.flash_auto_rounded),
-                                  title: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: const [
-                                      Text("Light"),
-                                      Text("\$108.00")
-                                    ],
-                                  ),
-                                  subtitle: Row(
-                                    children: const [
-                                      Text(
-                                        "MASTERCARD ****3241",
-                                        style: TextStyle(fontSize: 12),
-                                      )
-                                    ],
+                                return Card(
+                                  shadowColor: AppColor.appTransparent,
+                                  child: ListTile(
+                                    onTap: () {
+                                      viewmodel.templateIndex = index;
+                                    },
+                                    iconColor: AppColor.appAmber,
+                                    tileColor: AppColor.appGrey,
+                                    shape: RoundedRectangleBorder(
+                                        side: viewmodel.templateIndex == index
+                                            ? const BorderSide(
+                                                color: AppColor.appBlue)
+                                            : BorderSide.none,
+                                        borderRadius:
+                                            BorderRadius.circular(radius)),
+                                    leading: const Icon(Icons.flash_on),
+                                    title: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text("Light"),
+                                        Text(
+                                            "\$${userStore.templates[index].amount}")
+                                      ],
+                                    ),
+                                    subtitle: Row(
+                                      children: const [
+                                        Text(
+                                          "MASTERCARD ****3241",
+                                          style: TextStyle(fontSize: 12),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 );
                               }),
@@ -109,23 +115,32 @@ class PayWithTemplate extends StatelessWidget {
                         return viewmodel.templateIndex == null
                             ? SFElevatedButton(
                                 size: const Size(200, 50),
-                                childEB:  Text(
+                                childEB: Text(
                                     AppStrings.CONTINUE_WITHOUT_TEMPLATE,
-                                    style: const TextStyle(color: AppColor.appBlue)),
+                                    style: const TextStyle(
+                                        color: AppColor.appBlue)),
                                 color: AppColor.appWhite,
                                 borderColor: AppColor.appBlue,
-                                onPressedEB: () {},
-                              )
-                            : SFElevatedButton(
-                                size: const Size(200, 50),
-                                childEB:  Text(AppStrings.CONTINUE,
-                                    style: const TextStyle(color: AppColor.appWhite)),
-                                color: AppColor.appBlue,
-                                borderColor: AppColor.appWhite,
                                 onPressedEB: () {
                                   Get.toNamed(
                                     AppRoutes.LIGHT_SCREEN,
                                   );
+                                },
+                              )
+                            : SFElevatedButton(
+                                size: const Size(200, 50),
+                                childEB: Text(AppStrings.CONTINUE,
+                                    style: const TextStyle(
+                                        color: AppColor.appWhite)),
+                                color: AppColor.appBlue,
+                                borderColor: AppColor.appWhite,
+                                onPressedEB: () {
+                                  Get.toNamed(AppRoutes.LIGHT_SCREEN,
+                                      arguments: [
+                                        viewmodel.templateIndex,
+                                        false
+                                      ]);
+                                  viewmodel.templateIndex = null;
                                 },
                               );
                       }),

@@ -25,6 +25,21 @@ mixin _$LanguageListViewModel on _LanguageListViewModelBase, Store {
     });
   }
 
+  late final _$_LanguageListViewModelBaseActionController =
+      ActionController(name: '_LanguageListViewModelBase', context: context);
+
+  @override
+  dynamic getSelectedLanguageIndex() {
+    final _$actionInfo =
+        _$_LanguageListViewModelBaseActionController.startAction(
+            name: '_LanguageListViewModelBase.getSelectedLanguageIndex');
+    try {
+      return super.getSelectedLanguageIndex();
+    } finally {
+      _$_LanguageListViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

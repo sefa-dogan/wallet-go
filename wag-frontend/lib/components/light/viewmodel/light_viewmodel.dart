@@ -1,6 +1,7 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/store/user/model/template.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
@@ -32,7 +33,9 @@ abstract class _LightViewModelBase with Store {
   int pageIndexWhatIsCvvCvcCode = 4;
   bool isCompleted = false;
 
+  bool comingForEditTemplate = false;
   AppAccount? selectedAppAccount;
+  Template? currentTemplate;
 
   @observable
   String iban = "";
@@ -49,7 +52,6 @@ abstract class _LightViewModelBase with Store {
   bool showIbanErrorText = false;
   @observable
   bool showCurrencyErrorText = false;
-
   @observable
   bool inProgress = false;
   @observable
@@ -68,7 +70,7 @@ abstract class _LightViewModelBase with Store {
   String? paymentMethodTextFieldText;
 
   @action
-  setSmartCardTextFieldText() {
+  void setSmartCardTextFieldText() {
     if (indexSmartCard != null) {
       controller.animateToPage(pageIndexChooseCurrencyList,
           duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
@@ -77,15 +79,37 @@ abstract class _LightViewModelBase with Store {
   }
 
   @action
-  setPaymentMethodTextFieldText() {
+  void setPaymentMethodTextFieldText() {
     controller.animateToPage(pageIndexChooseSmartCardList,
         duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
     paymentMethodTextFieldText = userStore.wallet.name;
   }
 
+  /// LightScreen' e arguments aracılığıyla template indexi ve bu indexin ne amaçla gönderildiği bilgileri gelirse setTemplate çalışır
   @action
-  Future startTransfer() async {
-    //amountsdgsahsaf
+  void setTemplate(List arguments) {
+    int templateIndex = arguments[0];
+    comingForEditTemplate = arguments[1];
+    currentTemplate = userStore.templates[templateIndex];
+    paymentMethodTextFieldText = userStore.wallet.name;
+    selectedAppAccount = userStore.appAccounts
+        .firstWhere((account) => account.id == currentTemplate!.accountId);
+    smartCardTextFieldText = selectedAppAccount!.name;
+    amount = currentTemplate!.amount;
+  }
+
+  /// setTemplate metodu ile set edilen değişkenlerin değerlerini varsayılan halleri ile tekrar set eder.
+  void setAsDefaultValues() {
+    currentTemplate = null;
+    comingForEditTemplate = false;
+    paymentMethodTextFieldText = null;
+    selectedAppAccount = null;
+    smartCardTextFieldText = null;
+    amount = null;
+  }
+
+  @action
+  Future<void> startTransfer() async {
     try {
       if (iban.isNotEmpty && amount != null && selectedAppAccount != null) {
         if (selectedAppAccount!.balance >= amount!) {
@@ -122,7 +146,8 @@ abstract class _LightViewModelBase with Store {
     }
   }
 
-  showAllError() {
+  @action
+  void showAllError() {
     showPaymentMethodErrorText = true;
     showSmartCardErrorText = true;
     showAmountErrorText = true;
@@ -172,7 +197,7 @@ abstract class _LightViewModelBase with Store {
     return transaction.toMap();
   }
 
-  Future postTrancaction() async {
+  Future<void> postTrancaction() async {
     try {
       var _data = createTrancactionAndConvertToMap();
       var response =
@@ -183,6 +208,39 @@ abstract class _LightViewModelBase with Store {
     } catch (error) {
       debugPrint(error.toString());
       Future.error(error);
+    }
+  }
+
+  Future<void> deleteTemplate(String templateId) async {
+    try {
+      var response =
+          await dioClient.delete(AppStrings.TEMPLATES_PATH + templateId);
+      if (response.statusCode == 204) {
+        await userStore.getTemplates();
+      }
+    } catch (error) {
+      return Future.error(error);
+    }
+  }
+
+  Map<String, dynamic> createTemplateAndConvertTomap(String templateId) {
+    var template = Template(
+        id: templateId,
+        amount: amount!,
+        accountId: selectedAppAccount!.id,
+        walletId: currentTemplate!.walletId);
+    return template.toMap();
+  }
+
+  Future<void> updateTemplate(String templateId) async {
+    try {
+      var response = await dioClient.put(AppStrings.TEMPLATES_PATH + templateId,
+          data: createTemplateAndConvertTomap(templateId));
+      if (response.statusCode == 200) {
+        await userStore.getTemplates();
+      }
+    } catch (error) {
+      return Future.error(error);
     }
   }
 }

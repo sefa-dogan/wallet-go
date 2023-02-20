@@ -1,4 +1,6 @@
 // ignore: import_of_legacy_library_into_null_safe
+// ignore_for_file: use_build_context_synchronously, duplicate_ignore, import_of_legacy_library_into_null_safe
+
 import 'package:animated_dialog_box/animated_dialog_box.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';

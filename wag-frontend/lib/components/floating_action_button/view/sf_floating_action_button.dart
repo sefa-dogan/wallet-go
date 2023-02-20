@@ -29,7 +29,7 @@ class SFFloatingActionButton extends StatelessWidget {
                 children: [ChooseCommunalType(), PayWithTemplate()],
               );
             },
-          );
+          ).whenComplete(() => viewmodel.templateIndex = null);
         },
         child: const Icon(Icons.add));
   }

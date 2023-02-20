@@ -10,10 +10,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 // ignore: must_be_immutable
 class SmartCard extends StatelessWidget {
-  SmartCard({super.key, required this.smartCardTemplateList});
-  List smartCardTemplateList;
-  // ignore: prefer_typing_uninitialized_variables
-  var valuee;
+  SmartCard({super.key});
+
   final viewmodel = locator<LightViewModel>();
 
   @override

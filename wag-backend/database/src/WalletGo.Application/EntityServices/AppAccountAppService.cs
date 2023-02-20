@@ -31,7 +31,7 @@ namespace WalletGo.EntityServices
         {
             List<AppAccount> allAppAccounts = new List<AppAccount>();
             allAppAccounts = await Repository.GetListAsync();
-            //TODO Linq yapma
+            //TODO Linq yerine GetListAsync i kullan.
             List<Guid> appAccounts = (from account in allAppAccounts where account.WalletId == walletId select account.Id).ToList();
             return appAccounts;
         }

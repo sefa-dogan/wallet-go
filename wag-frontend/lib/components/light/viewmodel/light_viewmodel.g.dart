@@ -258,7 +258,7 @@ mixin _$LightViewModel on _LightViewModelBase, Store {
       AsyncAction('_LightViewModelBase.startTransfer', context: context);
 
   @override
-  Future<dynamic> startTransfer() {
+  Future<void> startTransfer() {
     return _$startTransferAsyncAction.run(() => super.startTransfer());
   }
 
@@ -266,7 +266,7 @@ mixin _$LightViewModel on _LightViewModelBase, Store {
       ActionController(name: '_LightViewModelBase', context: context);
 
   @override
-  dynamic setSmartCardTextFieldText() {
+  void setSmartCardTextFieldText() {
     final _$actionInfo = _$_LightViewModelBaseActionController.startAction(
         name: '_LightViewModelBase.setSmartCardTextFieldText');
     try {
@@ -277,11 +277,33 @@ mixin _$LightViewModel on _LightViewModelBase, Store {
   }
 
   @override
-  dynamic setPaymentMethodTextFieldText() {
+  void setPaymentMethodTextFieldText() {
     final _$actionInfo = _$_LightViewModelBaseActionController.startAction(
         name: '_LightViewModelBase.setPaymentMethodTextFieldText');
     try {
       return super.setPaymentMethodTextFieldText();
+    } finally {
+      _$_LightViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTemplate(List<dynamic> arguments) {
+    final _$actionInfo = _$_LightViewModelBaseActionController.startAction(
+        name: '_LightViewModelBase.setTemplate');
+    try {
+      return super.setTemplate(arguments);
+    } finally {
+      _$_LightViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void showAllError() {
+    final _$actionInfo = _$_LightViewModelBaseActionController.startAction(
+        name: '_LightViewModelBase.showAllError');
+    try {
+      return super.showAllError();
     } finally {
       _$_LightViewModelBaseActionController.endAction(_$actionInfo);
     }

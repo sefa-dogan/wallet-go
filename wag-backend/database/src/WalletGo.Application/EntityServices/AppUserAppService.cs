@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -11,7 +12,9 @@ using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Emailing;
+using Volo.Abp.Emailing.Templates;
 using Volo.Abp.Sms;
+using Volo.Abp.TextTemplating;
 using WalletGo.EntitiesDto.AppUserW;
 using WalletGo.EntityFrameworkCore;
 
@@ -28,12 +31,14 @@ namespace WalletGo.Entities
     {
         Guid? result;
         private readonly IEmailSender _emailSender;
+        private MailMessage _mailMessage;
 
         public AppUserAppService(IRepository<AppUser, Guid> repository, IEmailSender emailSender)
             : base(repository)
         {
-            result = (Guid?)null;
+            //result = (Guid?)null;
             _emailSender = emailSender;
+            _mailMessage = new MailMessage("sefadoan-@hotmail.com", "sefadoan6@gmail.com", "Email subject", "This is email body...");
 
         }
 
@@ -51,13 +56,16 @@ namespace WalletGo.Entities
 
         public async Task<bool> SendEmail()
         {
+            
+                await _emailSender.SendAsync(
+                                "sefadoan-@hotmail.com",     // target email address
+                                "Email subject",         // subject
+                                "This is email body..."  // email body
+                                
+                            );
+                return true;
+            
 
-            await _emailSender.SendAsync(
-                "sefadoan-@hotmail.com",     // target email address
-                "Email subject",         // subject
-                "This is email body..."  // email body
-            );
-            return true;
         }
     }
 }

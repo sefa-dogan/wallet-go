@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/onboarding/view/widgets/local_generic_page_viewmodel.dart';
-import 'package:flutter_boilerplate/components/register/view/register_screen.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_elevated_button.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_text_button.dart';
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
@@ -10,7 +9,7 @@ import 'package:flutter_boilerplate/core/constants/app_sizes.dart';
 import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+// import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -52,7 +51,7 @@ class OnBoardingScreen extends StatelessWidget {
               child: Row(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                   Expanded(
+                  Expanded(
                     child: Text(
                       AppStrings.INTRO_SCREEN_TITLE1,
                       textAlign: TextAlign.center,
@@ -69,15 +68,16 @@ class OnBoardingScreen extends StatelessWidget {
                   Expanded(
                       child: SFElevatedButton(
                     onPressedEB: () {
-                      showMaterialModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return const RegisterScreen();
-                        },
-                      );
-                      // Get.toNamed(AppRoutes.REGISTER_SCREEN);
+                      //TODO aşağıdaki bloğu yorum satırından çıkartıp get satırını da yorum satırı yaptıktan sonra gelen hatayı araştır.
+                      // showMaterialModalBottomSheet(
+                      //   context: context,
+                      //   builder: (context) {
+                      //     return const RegisterScreen();
+                      //   },
+                      // );
+                      Get.toNamed(AppRoutes.REGISTER_SCREEN);
                     },
-                    childEB:  Text(AppStrings.REGISTER),
+                    childEB: Text(AppStrings.REGISTER),
                   )),
                 ],
               ),
@@ -88,7 +88,7 @@ class OnBoardingScreen extends StatelessWidget {
                   onPressedFunc: () {
                     Get.toNamed(AppRoutes.LOGIN_SCREEN);
                   },
-                  buttonChild:  Text(
+                  buttonChild: Text(
                     AppStrings.LOGIN,
                     style: const TextStyle(color: AppColor.appBlue),
                   )),

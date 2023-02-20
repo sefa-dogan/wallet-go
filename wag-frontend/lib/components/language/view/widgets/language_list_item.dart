@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_custom_alert.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_elevated_button.dart';
@@ -31,7 +33,7 @@ class LanguageListItem extends StatelessWidget {
             builder: (context) => SFCustomAlert(
               title: AppStrings.WARNING,
                 message:
-                    "Lütfen değişiklikleri tamamlamak için uygulamayı kapatıp açın",
+                    AppStrings.LANGUAGE_CHANGE,
                 actions: [
                   SFElevatedButton(
                     childEB: Text(AppStrings.OK),

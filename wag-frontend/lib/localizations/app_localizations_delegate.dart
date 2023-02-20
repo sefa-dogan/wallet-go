@@ -19,7 +19,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
     var jsonStrings = await rootBundle.loadString(
         'assets/languages/${locale.languageCode}_${locale.countryCode}.json');
     AppLocalizations.localedStrings = json.decode(jsonStrings);
-    return Future.value();
+    return AppLocalizations();
   }
 
   @override

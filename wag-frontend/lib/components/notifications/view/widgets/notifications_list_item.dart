@@ -65,7 +65,7 @@ class _NotificationsListItemState extends State<NotificationsListItem> {
                             Visibility(
                               visible: isPressed,
                               child: const Icon(
-                                Icons.featured_play_list_rounded,
+                                Icons.delete,
                                 color: AppColor.appWhite,
                                 size: 15,
                               ),

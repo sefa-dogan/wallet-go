@@ -48,6 +48,7 @@ public class WalletGoDbContext :
     public DbSet<UserInfo> UserInfoes { get; set; }
     public DbSet<Wallet> Wallets { get; set; }
     public DbSet<AppAccount> Accounts { get; set; }
+    public DbSet<Template> Templates { get; set; }
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -114,7 +115,6 @@ public class WalletGoDbContext :
                 t.Property(p => p.FromAccountId).IsRequired();
                 t.Property(p => p.ToAccountId).IsRequired();
                 t.Property(p => p.Amount).IsRequired();
-
                 t.HasOne(t => t.Account)            
                 .WithMany(w => w.Transactions)       
                 .HasForeignKey(g => g.ToAccountId);
@@ -154,6 +154,18 @@ public class WalletGoDbContext :
                 w.HasOne(a=>a.Wallet).WithMany(w=>w.Accounts).HasForeignKey(f=>f.WalletId);
                 w.ConfigureByConvention();
             });
+
+        builder.Entity<Template>(
+            t =>
+            {
+                t.ToTable("Templates", WalletGoConsts.DbSchema);
+                t.Property(t=>t.Amount).IsRequired();
+                t.Property(t => t.AccountId).IsRequired();
+                t.Property(t=>t.WalletId).IsRequired();
+                t.HasOne(t=>t.Account).WithMany(w=>w.Templates).HasForeignKey(f=>f.AccountId);
+                t.ConfigureByConvention();
+            }
+            );
 
     }
 }

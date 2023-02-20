@@ -41,19 +41,20 @@ class AppUser {
 
   String toJson() => json.encode(toMap());
 
-  factory AppUser.fromJson(String source) => AppUser.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AppUser.fromJson(String source) =>
+      AppUser.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'AppUser(id: $id, username: $username, password: $password)';
+  String toString() =>
+      'AppUser(id: $id, username: $username, password: $password)';
 
   @override
   bool operator ==(covariant AppUser other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.username == username &&
-      other.password == password;
+
+    return other.id == id &&
+        other.username == username &&
+        other.password == password;
   }
 
   @override

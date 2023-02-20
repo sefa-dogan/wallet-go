@@ -41,7 +41,7 @@ class ChooseCommunalType extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Row(
-                      children:  [
+                      children: [
                         Text(
                           AppStrings.SMART_CARDS,
                           style: const TextStyle(color: AppColor.appPaleGrey),
@@ -63,7 +63,10 @@ class ChooseCommunalType extends StatelessWidget {
                                 child: SFGestureRow(
                                   padding:
                                       const EdgeInsets.all(AppIntValues.TEN),
-                                  leadingIcon: const Icon(Icons.abc),
+                                  leadingIcon: const Icon(
+                                    Icons.flash_on,
+                                    color: AppColor.appAmber,
+                                  ),
                                   title: cards[index],
                                   onTap: () {
                                     viewmodel.controller.animateToPage(
@@ -84,7 +87,7 @@ class ChooseCommunalType extends StatelessWidget {
                 Column(
                   children: [
                     Row(
-                      children:  [
+                      children: [
                         Text(
                           AppStrings.OTHER,
                           style: const TextStyle(color: AppColor.appPaleGrey),
@@ -96,7 +99,10 @@ class ChooseCommunalType extends StatelessWidget {
                           borderRadius: BorderRadius.circular(radius)),
                       child: SFGestureRow(
                         padding: const EdgeInsets.all(AppIntValues.TEN),
-                        leadingIcon: const Icon(Icons.abc),
+                        leadingIcon: const Icon(
+                          Icons.flash_on,
+                          color: AppColor.appAmber,
+                        ),
                         title: AppStrings.INCREASE_BALANCE,
                         onTap: () {
                           viewmodel.index = 1;

@@ -2,6 +2,7 @@
 using WalletGo.Entities;
 using WalletGo.EntitiesDto.AccountW;
 using WalletGo.EntitiesDto.AppUserW;
+using WalletGo.EntitiesDto.TemplateW;
 using WalletGo.EntitiesDto.TransactionW;
 using WalletGo.EntitiesDto.UserInfoW;
 using WalletGo.EntitiesDto.WalletW;
@@ -20,11 +21,13 @@ public class WalletGoApplicationAutoMapperProfile : Profile
         CreateMap<UserInfo, UserInfoDto>();
         CreateMap<Wallet, WalletDto>();
         CreateMap<AppAccount, AppAccountDto>();
+        CreateMap<Template, TemplateDto>();
 
         CreateMap<CreateUpdateAppUserDto, AppUser>();
         CreateMap<CreateUpdateTransactionDto, Transaction>();
         CreateMap<CreateUpdateUserInfoDto, UserInfo>();
         CreateMap<CreateUpdateWalletDto, Wallet>();
         CreateMap<CreateUpdateAppAccountDto, AppAccount>();
+        CreateMap<CreateUpdateTemplateDto, Template>();
     }
 }

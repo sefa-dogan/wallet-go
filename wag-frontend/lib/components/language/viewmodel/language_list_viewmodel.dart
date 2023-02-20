@@ -1,3 +1,4 @@
+import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/constants/shared_preferences.dart';
 import 'package:mobx/mobx.dart';
 part 'language_list_viewmodel.g.dart';
@@ -8,8 +9,8 @@ class LanguageListViewModel = _LanguageListViewModelBase
 
 abstract class _LanguageListViewModelBase with Store {
   List<List<String>> languages = [
-    ["Turkish", "tr", "TR"],
-    ["English", "en", "US"]
+    [AppStrings.TURKISH, "tr", "TR"],
+    [AppStrings.ENGLISH, "en", "US"]
   ];
 
   @observable

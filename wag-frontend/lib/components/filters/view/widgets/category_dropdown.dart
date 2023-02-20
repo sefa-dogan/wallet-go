@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/components/atomic_widgets/sf_drop_down_button_form_field.dart';
+import 'package:flutter_boilerplate/components/payments/view/widgets/sf_drop_down_button_form_field.dart';
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
