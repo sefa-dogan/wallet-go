@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobx/mobx.dart';
+
 import 'package:flutter_boilerplate/client.dart';
 import 'package:flutter_boilerplate/components/payments/model/template.dart';
-import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/store/user/model/app_account.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
-import 'package:get/get.dart';
-import 'package:mobx/mobx.dart';
+
 part 'payments_viewmodel.g.dart';
 
 // ignore: library_private_types_in_public_api
@@ -16,22 +15,29 @@ class PaymentsViewModel = _PaymentsViewModelBase with _$PaymentsViewModel;
 
 abstract class _PaymentsViewModelBase with Store {
   final userStore = locator<UserStore>();
-  final controller = PageController(initialPage: 0);
 
   final indexPageAppAccountList = 0;
   final indexPageTransactionsList = 1;
 
-  AppAccount? selectedAppAccount;
+  double amountForTemplate = 0;
+
   AppAccount? selectedAppAccountForTemplate;
+  PageController? pageController;
   TabController? tabController;
 
-  double amountForTemplate = 0;
+  int currentPageIndex = 0;
+  AppAccount? selectedAppAccount;
   @observable
   int currentTabIndex = 0;
   @observable
   bool showAmountErrorMessage = false;
   @observable
   bool showDeleteTemplateBox = false;
+
+  @observable
+  DateTime? fromDate;
+  @observable
+  DateTime? toDate;
 
   Map<String, dynamic> createTemplateAndConvertToMap() {
     var template = Template(
@@ -62,7 +68,9 @@ abstract class _PaymentsViewModelBase with Store {
       if (response.statusCode == 200) {
         await userStore.getTemplates();
       }
-    } catch (e) {}
+    } catch (error) {
+      return Future.error(error);
+    }
   }
 
   Future getCurrentAccount(String accountId) async {

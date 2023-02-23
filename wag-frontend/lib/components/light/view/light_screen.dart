@@ -25,8 +25,6 @@ import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 
-import '../../../store/user/model/template.dart';
-
 class LightScreen extends StatelessWidget {
   LightScreen({super.key});
   final viewmodel = locator<LightViewModel>();
@@ -42,7 +40,7 @@ class LightScreen extends StatelessWidget {
         onWillPop: () {
           viewmodel.setAsDefaultValues();
           Get.back();
-          return Future.value();
+          return Future.value(true);
         },
         child: Scaffold(
           backgroundColor: AppColor.appWhite,
@@ -60,25 +58,23 @@ class LightScreen extends StatelessWidget {
                       onPressedFunc: () {
                         showDialog(
                           context: context,
-                          builder: (context) {
+                          builder: (c) {
                             return SFCustomAlert(
                               title: AppStrings.WARNING,
-                              message: AppStrings.LIGHT_ALERT_DIALOG_CONTENT,
+                              message: AppStrings.ARE_YOU_SURE_DELETE_TEMPLATE,
                               actions: [
                                 SFElevatedButton(
                                     childEB: Text(AppStrings.YES_I_AM_SURE),
                                     onPressedEB: () async {
+                                      Get.back();
                                       try {
                                         await Get.showOverlay(
                                             asyncFunction: () async {
                                               await viewmodel
                                                   .deleteTemplate(viewmodel
                                                       .currentTemplate!.id)
-                                                  .then((value) =>
-                                                      SFSnackBar().showSnackBar(
-                                                        AppStrings.SUCCESSFUL,
-                                                        "Template is deleted",
-                                                      ));
+                                                  .timeout(
+                                                      const Duration(seconds: 10));
                                             },
                                             loadingWidget: const Center(
                                               child:
@@ -87,9 +83,14 @@ class LightScreen extends StatelessWidget {
                                             opacity: 0.7,
                                             opacityColor:
                                                 AppColor.appOverlayColor);
+                                        SFSnackBar().showSnackBar(
+                                          AppStrings.SUCCESSFUL,
+                                          AppStrings.TEMPLATE_IS_DELETED,
+                                        );
                                         Get.offAllNamed(
                                             AppRoutes.PAYMENTS_SCREEN);
                                       } catch (e) {
+                                        debugPrint(e.toString());
                                         SFAlertDialog().showAlertDialog(
                                           context,
                                           buttonText: AppStrings.OK,
@@ -111,17 +112,6 @@ class LightScreen extends StatelessWidget {
                             );
                           },
                         );
-
-                        // SFAlertDialog().showAlertDialog(context,
-                        //     buttonText: AppStrings.YES_I_AM_SURE,
-                        //     content: AppStrings.LIGHT_ALERT_DIALOG_CONTENT,
-                        //     title: AppStrings.WARNING,
-                        //     icon: Row(
-                        //       mainAxisAlignment: MainAxisAlignment.center,
-                        //       children: [
-                        //         Image.asset(AppStrings.EXCLAMATION_ICON)
-                        //       ],
-                        //     ));
                       },
                     )
                   ]
@@ -168,10 +158,11 @@ class LightScreen extends StatelessWidget {
                                             .then((value) =>
                                                 SFSnackBar().showSnackBar(
                                                   AppStrings.SUCCESSFUL,
-                                                  "Template is updated",
+                                                  AppStrings
+                                                      .TEMPLATE_IS_UPDATED,
                                                 ));
                                       },
-                                      loadingWidget: Center(
+                                      loadingWidget: const Center(
                                         child: CircularProgressIndicator(),
                                       ),
                                       opacity: 0.7,

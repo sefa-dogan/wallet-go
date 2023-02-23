@@ -4,7 +4,6 @@ import 'package:flutter_boilerplate/components/payments/viewmodel/payments_viewm
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
-import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
 import 'package:get/get.dart';
@@ -18,18 +17,17 @@ class AppAccountList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-             Text(
-              AppStrings.CHOOSE_CARD,
-              style: const TextStyle(fontSize: AppIntValues.FIFTEEN),
-            ),
-            IconButton(
-              icon: const Icon(Icons.filter_list),
-              onPressed: () => Get.toNamed(AppRoutes.FILTERS_SCREEN),
-            )
-          ],
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10, top: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                AppStrings.CHOOSE_CARD,
+                style: const TextStyle(fontSize: AppIntValues.FIFTEEN),
+              ),
+            ],
+          ),
         ),
         Expanded(
           child: ListView.builder(
@@ -51,7 +49,7 @@ class AppAccountList extends StatelessWidget {
                       opacity: 0.5,
                       opacityColor: AppColor.appGrey);
 
-                  viewmodel.controller.animateToPage(
+                  viewmodel.pageController!.animateToPage(
                       viewmodel.indexPageTransactionsList,
                       duration: const Duration(milliseconds: 200),
                       curve: Curves.easeInOut);

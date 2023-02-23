@@ -7,7 +7,6 @@ import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/store/user/model/app_account.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
@@ -67,46 +66,6 @@ class TemplateList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Observer(builder: (_) {
-                  //   return AnimatedContainer(
-                  //       decoration: const BoxDecoration(
-                  //           borderRadius: BorderRadius.horizontal(
-                  //               right: Radius.circular(10))),
-                  //       width: viewmodel.showDeleteTemplateBox ? 50 : 0,
-                  //       duration: const Duration(seconds: 1),
-                  //       curve: Curves.fastLinearToSlowEaseIn,
-                  //       child: Material(
-                  //         color: AppColor.appTransparent,
-                  //         type: MaterialType.circle,
-                  //         child: IconButton(
-                  //             splashRadius: 20,
-                  //             onPressed: () async {
-                  //               SFAlertDialog().showAlertDialog(context,
-                  //                   buttonText: AppStrings.DELETE_TEMPLATE);
-                  //               await Get.showOverlay(
-                  //                   asyncFunction: () async {
-                  //                     await viewmodel.deleteTemplate(
-                  //                         userStore.templates[index].id);
-                  //                   },
-                  //                   loadingWidget: const Center(
-                  //                     child: CircularProgressIndicator(),
-                  //                   ),
-                  //                   opacity: 0.7,
-                  //                   opacityColor: AppColor.appOverlayColor);
-                  //             },
-                  //             icon: Visibility(
-                  //               visible: viewmodel.showDeleteTemplateBox,
-                  //               child: Column(
-                  //                 children: const [
-                  //                   Icon(
-                  //                     Icons.delete,
-                  //                     color: AppColor.appRed,
-                  //                   ),
-                  //                 ],
-                  //               ),
-                  //             )),
-                  //       ));
-                  // }),
                 ],
               ),
             );

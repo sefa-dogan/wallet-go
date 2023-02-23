@@ -1,7 +1,7 @@
-import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get/get.dart';
+
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_elevated_button.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_snack_bar.dart';
 import 'package:flutter_boilerplate/components/payments/view/widgets/sf_drop_down_button_form_field.dart';
@@ -11,8 +11,6 @@ import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
 
 class CreateTemplateForm extends StatelessWidget {
   CreateTemplateForm({super.key});
@@ -113,8 +111,8 @@ class CreateTemplateForm extends StatelessWidget {
                         barBlur: 1,
                         colorText: AppColor.appWhite,
                         backgroundColor: AppColor.appBlue,
-                        animationDuration: Duration(milliseconds: 500),
-                        duration: Duration(seconds: 2));
+                        animationDuration: const Duration(milliseconds: 500),
+                        duration: const Duration(seconds: 2));
                   }
                 },
               )
@@ -123,6 +121,5 @@ class CreateTemplateForm extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

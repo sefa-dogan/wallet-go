@@ -175,8 +175,12 @@ class AppStrings {
   static String WARNING = AppLocalizations.localedStrings["WARNING"];
   static String YES_I_AM_SURE =
       AppLocalizations.localedStrings["YES_I_AM_SURE"];
-  static String LIGHT_ALERT_DIALOG_CONTENT =
-      AppLocalizations.localedStrings["LIGHT_ALERT_DIALOG_CONTENT"];
+  static String ARE_YOU_SURE_DELETE_TEMPLATE =
+      AppLocalizations.localedStrings["ARE_YOU_SURE_DELETE_TEMPLATE"];
+  static String TEMPLATE_IS_DELETED =
+      AppLocalizations.localedStrings["TEMPLATE_IS_DELETED"];
+  static String TEMPLATE_IS_UPDATED =
+      AppLocalizations.localedStrings["TEMPLATE_IS_UPDATED"];
   static String DELETE_TEMPLATE =
       AppLocalizations.localedStrings["DELETE_TEMPLATE"];
   static String CHOOSE_THE_CATEGORY =
@@ -271,4 +275,5 @@ class AppStrings {
   static String INVALID_PASSWORD =
       AppLocalizations.localedStrings["INVALID_PASSWORD"];
   static String SUCCESSFUL = AppLocalizations.localedStrings["SUCCESSFUL"];
+  static String SELECT_BOTH_FROM_AND_TO_DATE = " DFGFS";
 }

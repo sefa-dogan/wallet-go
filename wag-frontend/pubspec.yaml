@@ -28,6 +28,7 @@ dependencies:
   smart_alert_dialog: ^4.0.4
   container_tab_indicator: ^0.3.0
   syncfusion_flutter_datepicker: ^20.4.38
+  intl: ^0.17.0
   table_calendar: ^3.0.8
   super_tooltip: ^1.0.1
   google_fonts: ^3.0.1

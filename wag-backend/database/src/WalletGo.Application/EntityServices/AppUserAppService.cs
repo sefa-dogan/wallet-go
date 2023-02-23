@@ -50,21 +50,24 @@ namespace WalletGo.Entities
 
         public async Task<Guid> getUserId(String username)
         {
+
             AppUser user = await Repository.FindAsync(x => x.Username == username);
             return user.Id;
+
+
         }
 
         public async Task<bool> SendEmail()
         {
-            
-                await _emailSender.SendAsync(
-                                "sefadoan-@hotmail.com",     // target email address
-                                "Email subject",         // subject
-                                "This is email body..."  // email body
-                                
-                            );
-                return true;
-            
+
+            await _emailSender.SendAsync(
+                            "sefadoan-@hotmail.com",     // target email address
+                            "Email subject",         // subject
+                            "This is email body..."  // email body
+
+                        );
+            return true;
+
 
         }
     }

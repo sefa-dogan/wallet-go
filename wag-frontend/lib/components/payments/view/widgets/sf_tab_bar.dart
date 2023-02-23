@@ -8,8 +8,9 @@ import 'package:flutter_boilerplate/locator.dart';
 
 class SFTabBar {
   final radiusIntValue = AppIntValues.TEN;
-  final viewmodel=locator<PaymentsViewModel>();
+  final viewmodel = locator<PaymentsViewModel>();
 
+  
   PreferredSizeWidget sfTabBar() {
     return TabBar(
         controller: viewmodel.tabController,
@@ -18,10 +19,9 @@ class SFTabBar {
         indicator: ContainerTabIndicator(
             radius: BorderRadius.all(Radius.circular(radiusIntValue)),
             color: AppColor.appBlue),
-        // splashBorderRadius: BorderRadius.all(Radius.circular(10)),
         unselectedLabelColor: AppColor.appBlue,
         labelColor: AppColor.appWhite,
-        tabs:  [
+        tabs: [
           Tab(
             child: Text(AppStrings.TRANSACTIONS),
           ),

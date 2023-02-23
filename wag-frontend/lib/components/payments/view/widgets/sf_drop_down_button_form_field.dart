@@ -22,10 +22,7 @@ class SFDropdownButtonFormField extends StatefulWidget {
 }
 
 class _SFDropdownButtonFormFieldState extends State<SFDropdownButtonFormField> {
-  // ignore: prefer_typing_uninitialized_variables
   final viewmodel = locator<PaymentsViewModel>();
-  var dValue;
-  // Function
   @override
   Widget build(BuildContext context) {
     return Column(

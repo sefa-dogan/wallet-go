@@ -92,7 +92,7 @@ List<GetPage> appRouter = <GetPage>[
   ),
   GetPage(
     name: AppRoutes.FILTERS_SCREEN,
-    page: () => const FiltersScreen(),
+    page: () => FiltersScreen(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),
@@ -114,8 +114,4 @@ List<GetPage> appRouter = <GetPage>[
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),
-  // GetPage(
-  //   name: AppRoutes.SETTINGS_VIEW,
-  //   page: () => SettingsView(),
-  // )
 ];

@@ -83,11 +83,13 @@
     "YES_DELETE" : "Evet, sil",
     "TEMPLATES" : "Şablonlar",
     "PAYMENT_METHODS_DELETE_BUTTON_CONTENT" :
-       "Bu eylemi geri almak imkansız olacaktır. Devam etmek istiyor musun?",
+       "Bu işlemi geri almak imkansız olacaktır. Devam etmek istiyor musun?",
     "WARNING" : "Uyarı!",
     "YES_I_AM_SURE" : "Evet, eminim",
-    "LIGHT_ALERT_DIALOG_CONTENT" :
+    "ARE_YOU_SURE_DELETE_TEMPLATE" :
        "Bu işlem geri alınamaz. Şablonu silmek istediğinizden emin misiniz?",
+    "TEMPLATE_IS_DELETED":"Şablon silindi",
+    "TEMPLATE_IS_UPDATED":"Şablon güncellendi",
     "DELETE_TEMPLATE" : "Şablonu sil",
     "CHOOSE_THE_CATEGORY" : "Kategoriyi seçin",
     "CHOOSE_COMMUNAL_TYPE" : "Ortak türü seçin",
@@ -131,7 +133,7 @@
     "CURRENCY" : "Para birimi",
     "FROM_TO" : "From - to",
     "CHOOSE_DATE" : "Tarih seçin",
-    "FILTERS ": "Filtreler",
+    "FILTERS": "Filtreler",
     "PAY_FROM_BALANCE" : "Bakiyeden ödeme",
     "IBAN" : "Iban",
     "ENTER_IBAN" : "Iban giriniz",

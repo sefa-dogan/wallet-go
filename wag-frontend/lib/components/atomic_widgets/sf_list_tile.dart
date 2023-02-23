@@ -28,6 +28,8 @@ class SFListTile extends StatelessWidget {
   AppAccount? appAccount;
   EdgeInsets? padding;
   Color? color;
+  DateTime? fromDate;
+  DateTime? toDate;
   Function(Transaction, AppAccount)? onTap;
   @override
   Widget build(BuildContext context) {

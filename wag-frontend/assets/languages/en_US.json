@@ -86,8 +86,10 @@
       "It will be impossible to undo this action. Do you want to continue?",
    "WARNING" : "Warning!",
    "YES_I_AM_SURE" : "Yes, I am sure",
-   "LIGHT_ALERT_DIALOG_CONTENT" :
+   "ARE_YOU_SURE_DELETE_TEMPLATE" :
       "This transaction cannot be reversed. Are you sure you want to delete the template?",
+   "TEMPLATE_IS_DELETED":"Template is deleted",
+   "TEMPLATE_IS_UPDATED":"Template is updated",
    "DELETE_TEMPLATE" : "Delete template",
    "CHOOSE_THE_CATEGORY" : "Choose the category",
    "CHOOSE_COMMUNAL_TYPE" : "Choose communal type",
@@ -131,7 +133,7 @@
    "CURRENCY" : "Currency",
    "FROM_TO" : "From - to",
    "CHOOSE_DATE" : "Choose date",
-   "FILTERS ": "Filters",
+   "FILTERS": "Filters",
    "PAY_FROM_BALANCE" : "Pay from balance",
    "IBAN" : "Iban",
    "ENTER_IBAN" : "Enter iban",

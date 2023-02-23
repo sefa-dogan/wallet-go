@@ -59,12 +59,46 @@ mixin _$PaymentsViewModel on _PaymentsViewModelBase, Store {
     });
   }
 
+  late final _$fromDateAtom =
+      Atom(name: '_PaymentsViewModelBase.fromDate', context: context);
+
+  @override
+  DateTime? get fromDate {
+    _$fromDateAtom.reportRead();
+    return super.fromDate;
+  }
+
+  @override
+  set fromDate(DateTime? value) {
+    _$fromDateAtom.reportWrite(value, super.fromDate, () {
+      super.fromDate = value;
+    });
+  }
+
+  late final _$toDateAtom =
+      Atom(name: '_PaymentsViewModelBase.toDate', context: context);
+
+  @override
+  DateTime? get toDate {
+    _$toDateAtom.reportRead();
+    return super.toDate;
+  }
+
+  @override
+  set toDate(DateTime? value) {
+    _$toDateAtom.reportWrite(value, super.toDate, () {
+      super.toDate = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 currentTabIndex: ${currentTabIndex},
 showAmountErrorMessage: ${showAmountErrorMessage},
-showDeleteTemplateBox: ${showDeleteTemplateBox}
+showDeleteTemplateBox: ${showDeleteTemplateBox},
+fromDate: ${fromDate},
+toDate: ${toDate}
     ''';
   }
 }
