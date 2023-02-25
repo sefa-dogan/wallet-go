@@ -10,7 +10,6 @@ import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/route/app_routes.dart';
 import 'package:flutter_boilerplate/locator.dart';
 import 'package:flutter_boilerplate/store/user/viewmodel/user_store.dart';
-import 'package:intl/intl.dart';
 
 class TransactionsList extends StatelessWidget {
   TransactionsList({super.key});
@@ -50,17 +49,23 @@ class TransactionsList extends StatelessWidget {
                           wallet: userStore.wallet,
                           appAccount: viewmodel.selectedAppAccount!,
                           transactions: userStore.transactions.reversed
-                              .where((transaction) =>
-                                  viewmodel.fromDate != null &&
-                                          viewmodel.toDate != null
-                                      ? DateTime.parse(
-                                              transaction.transactionDate) ==
-                                          viewmodel.toDate
-                                      : true)
-                              .toList());
+                              .where((transaction) {
+                            DateTime currentTransDate =
+                                DateTime.parse(transaction.transactionDate);
+                            return viewmodel.fromDate != null &&
+                                    viewmodel.toDate != null
+                                ? currentTransDate
+                                            .isAfter(viewmodel.fromDate!) &&
+                                        currentTransDate.isBefore(viewmodel
+                                            .toDate!
+                                            .add(const Duration(days: 1)))
+                                    ? true
+                                    : false
+                                : true;
+                          }).toList());
                     },
                   )
-                : SizedBox())
+                : const SizedBox())
       ],
     );
   }

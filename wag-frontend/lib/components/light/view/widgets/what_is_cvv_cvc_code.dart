@@ -44,7 +44,7 @@ class WhatIsCvvCvcCode extends StatelessWidget {
               padding: const EdgeInsets.only(
                   top: AppIntValues.FOURTY, bottom: AppIntValues.FOURTY),
               child: Image.asset(
-                AppStrings.CARD_CVV,
+                AppStrings.CARD_CVV_IMG,
               ),
             ),
              Padding(

@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:async';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,8 @@ import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/constants/app_int_values.dart';
 import 'package:flutter_boilerplate/core/constants/app_spaces.dart';
-import 'package:flutter_boilerplate/core/exceptions/null_exception.dart';
 import 'package:flutter_boilerplate/toast.dart';
+import 'package:flutter_boilerplate/utils/extensions/register_ext.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:tckn_check/tckn_check.dart';
@@ -94,107 +93,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   if (Tckn().check(viewmodel.tcno) &&
                                       EmailValidator.validate(
                                           viewmodel.email)) {
-                                    await Get.showOverlay(
-                                        asyncFunction: () async {
-                                          try {
-                                            await viewmodel
-                                                .postAppUser()
-                                                .timeout(const Duration(
-                                                    seconds: 10));
-                                          } on TimeoutException catch (timeOutExp) {
-                                            showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return SFCustomAlert(
-                                                  title: AppStrings.WARNING,
-                                                  message: AppStrings
-                                                      .CONNECTION_IS_LOW,
-                                                  exception: timeOutExp,
-                                                  imagePath: AppStrings
-                                                      .EXCLAMATION_ICON,
-                                                  actions: [
-                                                    SFElevatedButton(
-                                                      childEB: Text(
-                                                        AppStrings.OK,
-                                                        style: const TextStyle(
-                                                            color: AppColor
-                                                                .appBlue),
-                                                      ),
-                                                      onPressedEB: () =>
-                                                          Get.back(),
-                                                      color: AppColor.appWhite,
-                                                    )
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          } on NullException catch (exp) {
-                                            viewmodel.changeStateAllErrorText();
-                                            showDialog(
-                                              context: context,
-                                              builder: (context) =>
-                                                  SFCustomAlert(
-                                                      title: AppStrings.WARNING,
-                                                      imagePath: AppStrings
-                                                          .EXCLAMATION_ICON,
-                                                      exception: exp,
-                                                      message: AppStrings
-                                                          .MISSING_INFORMATION,
-                                                      actions: [
-                                                    SFElevatedButton(
-                                                      childEB: Text(
-                                                        AppStrings.OK,
-                                                        style: const TextStyle(
-                                                            color: AppColor
-                                                                .appBlue),
-                                                      ),
-                                                      onPressedEB: () =>
-                                                          Get.back(),
-                                                      color: AppColor.appWhite,
-                                                    )
-                                                  ]),
-                                            );
-                                          } catch (genericExp) {
-                                            showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return SFCustomAlert(
-                                                    title:
-                                                        AppStrings.WE_ARE_SAD,
-                                                    message: AppStrings
-                                                        .REGISTER_FAILED,
-                                                    exception: Exception(),
-                                                    imagePath:
-                                                        AppStrings.SAD_FACE,
-                                                    actions: [
-                                                      SFElevatedButton(
-                                                        childEB: Text(
-                                                          AppStrings.TRY_AGAIN,
-                                                          style: const TextStyle(
-                                                              color: AppColor
-                                                                  .appBlue),
-                                                        ),
-                                                        onPressedEB: () =>
-                                                            Get.back(),
-                                                        color:
-                                                            AppColor.appWhite,
-                                                      )
-                                                    ]);
-                                              },
-                                            );
-                                          }
-                                        },
-                                        loadingWidget: const Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                        opacity: 0.5,
-                                        opacityColor: AppColor.appOverlayColor);
+                                    await const RegisterScreen()
+                                        .register(context, viewmodel);
 
                                     !viewmodel.inProgress
                                         ? showDialog(
                                             context: context,
                                             builder: (context) => SFCustomAlert(
-                                              title: AppStrings.SUCCESSFUL,
+                                                title: AppStrings.SUCCESSFUL,
                                                 message: "",
                                                 actions: [
                                                   SFElevatedButton(
@@ -205,7 +111,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                             .LOGIN_SCREEN),
                                                   )
                                                 ],
-                                                imagePath: AppStrings.CHECK),
+                                                imagePath:
+                                                    AppStrings.CHECK_ICON),
                                           )
                                         : null;
                                   } else {

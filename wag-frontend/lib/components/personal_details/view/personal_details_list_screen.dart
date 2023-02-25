@@ -40,13 +40,7 @@ class PersonalDetailsListScreen extends StatelessWidget {
           onPressedLeading: () {
             viewmodel.isEditing = false;
             Get.offNamed(AppRoutes.PROFILE_SCREEN);
-            // viewmodel.isEditing = false;
-          }, /* actions: [
-          SFIconButton(
-              iconIconButton: Icons.edit,
-              iconColor: AppColor.appBlack,
-              onPressedIconButton: viewmodel.isPressedEdit)
-        ], */
+          }, 
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,12 +139,10 @@ class PersonalDetailsListScreen extends StatelessWidget {
                                   context: context,
                                   icon: SizedBox(
                                       width:
-                                          // ignore: use_build_context_synchronously
                                           MediaQuery.of(context).size.width / 4,
                                       height:
-                                          // ignore: use_build_context_synchronously
                                           MediaQuery.of(context).size.width / 4,
-                                      child: Image.asset(AppStrings.CHECK)),
+                                      child: Image.asset(AppStrings.CHECK_ICON)),
                                   secondButton: const SizedBox(),
                                   title: const SizedBox(),
                                   yourWidget: Container(

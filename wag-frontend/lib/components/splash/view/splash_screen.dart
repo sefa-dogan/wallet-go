@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 ]),
                           )
                         ],
-                        imagePath: AppStrings.SAD_FACE),
+                        imagePath: AppStrings.SAD_FACE_IMG),
                   );
                 }
               }

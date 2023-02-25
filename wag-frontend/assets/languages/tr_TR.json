@@ -139,6 +139,7 @@
     "ENTER_IBAN" : "Iban giriniz",
     "YOUR_PAYMENT_WAS_SUCCESSFUL" :
        "Harcamanız başarılı oldu!",
+   "DATE":"Tarih",
     "CATEGORY" : "KATEGORİ",
     "PAYMENT_DATE" : "HARCAMA TARİHİ",
     "PAYMENT_DETAILS" : "Harcama detayları",
@@ -158,5 +159,8 @@
        "Bu kullanıcı adına ait kullanıcı bulunamadı",
     "UPDATE_FAILED" : "Bilgiler güncellenemedi",
     "INVALID_PASSWORD" : "Geçersiz şifre",
-    "SUCCESSFUL" : "Başarılı"
+    "SUCCESSFUL" : "Başarılı",
+    "SELECT_BOTH_FROM_AND_TO_DATE": "Lütfen tarih aralığını seçiniz",
+    "THE_UNDER_CONSTRUCTION":"Bu sayfa yapım aşamasında!"
+
  }

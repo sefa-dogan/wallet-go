@@ -21,7 +21,7 @@ class SFTabBarView extends StatelessWidget {
       return TabBarView(
         controller: viewmodel.tabController,
         children: [
-          SFPageView(),
+          const SFPageView(),
           userStore.templates.isNotEmpty
               ? TemplateList()
               : const CreateTemplate()

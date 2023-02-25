@@ -62,7 +62,7 @@ class LoadMoneyOnYourCard extends StatelessWidget {
                                         onPressedEB: () => Get.back(),
                                       )
                                     ],
-                                    imagePath: AppStrings.CHECK);
+                                    imagePath: AppStrings.CHECK_ICON);
                               },
                             )
                           : null;

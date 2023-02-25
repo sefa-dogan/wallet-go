@@ -97,7 +97,8 @@ class LoginForm extends StatelessWidget {
                       decoration: TextDecoration.underline),
                 ),
                 onPressedFunc: () => Get.toNamed(
-                  AppRoutes.FORGOT_PASSWORD_SCREEN,
+                  // AppRoutes.FORGOT_PASSWORD_SCREEN,
+                  AppRoutes.SF_UNDER_CONSTRUCTION
                 ),
               )
             ],

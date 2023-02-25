@@ -93,9 +93,9 @@ abstract class _CreatePdfViewModelBase with Store {
     row.height = 30;
 
     row = grid.rows.add();
-    row.cells[0].value = "İşlem tarihi: ${DateFormat("dd/MM/yyyy hh:mm:ss").format(DateTime.parse(transaction.transactionDate))}";
+    row.cells[0].value =
+        "İşlem tarihi: ${DateFormat("dd/MM/yyyy hh:mm:ss").format(DateTime.parse(transaction.transactionDate))}";
     row.height = 30;
-
 
     grid.draw(page: page, bounds: const Rect.fromLTWH(0, 0, 0, 0));
     List<int> bytes = await document.save();

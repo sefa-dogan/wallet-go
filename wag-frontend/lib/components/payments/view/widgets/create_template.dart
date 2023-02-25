@@ -19,7 +19,7 @@ class CreateTemplate extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(AppStrings.RECTANGLE),
+              Image.asset(AppStrings.RECTANGLE_IMG),
               Padding(
                 padding: const EdgeInsets.only(
                     top: AppIntValues.THIRTY, bottom: AppIntValues.THIRTY),

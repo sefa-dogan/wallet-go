@@ -1,3 +1,4 @@
+import 'package:flutter_boilerplate/components/atomic_widgets/sf_under_construction_screen.dart';
 import 'package:flutter_boilerplate/components/filters/view/filters_screen.dart';
 import 'package:flutter_boilerplate/components/forgot_password/view/forgot_password_screen.dart';
 import 'package:flutter_boilerplate/components/home/view/home_screen.dart';
@@ -50,7 +51,7 @@ List<GetPage> appRouter = <GetPage>[
   ),
   GetPage(
     name: AppRoutes.PAYMENTS_SCREEN,
-    page: () => PaymentsScreen(),
+    page: () => const PaymentsScreen(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),
@@ -114,4 +115,9 @@ List<GetPage> appRouter = <GetPage>[
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),
+  GetPage(
+      name: AppRoutes.SF_UNDER_CONSTRUCTION,
+      page: () => const SFUnderConstructionScreen(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 200))
 ];

@@ -21,7 +21,7 @@ class _ScanCardScreenState extends State<ScanCardScreen> {
       ImageFiltered(
         imageFilter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
         child: Image.asset(
-          AppStrings.SCAN_CARD_BACKGROUND,
+          AppStrings.SCAN_CARD_BACKGROUND_IMG,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:intl/intl.dart';
+
 import 'package:flutter_boilerplate/components/payments/viewmodel/payments_viewmodel.dart';
 import 'package:flutter_boilerplate/core/constants/app_colors.dart';
 import 'package:flutter_boilerplate/locator.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class FilterLabel extends StatelessWidget {
   FilterLabel({super.key});
@@ -31,7 +29,7 @@ class FilterLabel extends StatelessWidget {
               viewmodel.fromDate = null;
               viewmodel.toDate = null;
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.close,
               color: AppColor.appBlue,
             ),

@@ -19,7 +19,7 @@ abstract class _SplashViewModelBase with Store {
 
   String username = "";
   String password = "";
-//TODO çıkış yaptıktan sonra prefs ten gelen değerin "" olması gerekiyor ve username ve password e "" atması gerekiyor bunu kontrol et.
+
   bool isLoggedIn() {
     username = SharedPref.prefs.getString("username")!;
     password = SharedPref.prefs.getString("password")!;

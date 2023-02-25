@@ -35,15 +35,16 @@ class AppStrings {
   static String UPDATE_APP_ACCOUNT_NAME_PATH =
       "api/app/app-account/update-name/";
   static String UPDATE_WALLET_BALANCE_PATH = "api/app/wallet/update-balance/";
-  static String USER_PROFILE_PICTURE = "assets/user.png";
-  static String INTRO_SCREEN_IMAGE1_NAME = "assets/bg.png";
-  static String EXCLAMATION_ICON = "assets/exclamation_icon.png";
-  static String RECTANGLE = "assets/rectangle.png";
-  static String CARD_CVV = "assets/card.png";
-  static String SCAN_CARD_BACKGROUND = "assets/scan_card_background.jpg";
-  static String SUCCESS_PAYMENT = "assets/success.png";
-  static String CHECK = "assets/check.png";
-  static String SAD_FACE = "assets/sad_face.jpg";
+  static String USER_PROFILE_PICTURE = "assets/images/user.png";
+  static String INTRO_SCREEN_IMAGE1_NAME = "assets/images/bg.png";
+  static String EXCLAMATION_ICON = "assets/images/exclamation_icon.png";
+  static String RECTANGLE_IMG = "assets/images/rectangle.png";
+  static String CARD_CVV_IMG = "assets/images/card.png";
+  static String SCAN_CARD_BACKGROUND_IMG = "assets/images/scan_card_background.jpg";
+  static String SUCCESS_PAYMENT_IMG = "assets/images/success.png";
+  static String CHECK_ICON = "assets/images/check.png";
+  static String SAD_FACE_IMG = "assets/images/sad_face.jpg";
+  static String UNDER_CONSTRUCTION_GIF = "assets/gifs/under_construction.gif";
   static String PDF_FONT = "assets/fonts/Roboto-Thin.ttf";
 
 // http metotlarında data parametresinde kullanılır
@@ -275,5 +276,9 @@ class AppStrings {
   static String INVALID_PASSWORD =
       AppLocalizations.localedStrings["INVALID_PASSWORD"];
   static String SUCCESSFUL = AppLocalizations.localedStrings["SUCCESSFUL"];
-  static String SELECT_BOTH_FROM_AND_TO_DATE = " DFGFS";
+  static String SELECT_BOTH_FROM_AND_TO_DATE =
+      AppLocalizations.localedStrings["SELECT_BOTH_FROM_AND_TO_DATE"];
+  static String DATE = AppLocalizations.localedStrings["DATE"];
+  static String THE_UNDER_CONSTRUCTION =
+      AppLocalizations.localedStrings["THE_UNDER_CONSTRUCTION"];
 }

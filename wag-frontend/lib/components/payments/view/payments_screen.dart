@@ -31,7 +31,6 @@ class _PaymentsScreenState extends State<PaymentsScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     List<DateTime?>? argument = Get.arguments;
     viewmodel.fromDate = argument?.first;
     viewmodel.toDate = argument?.last;

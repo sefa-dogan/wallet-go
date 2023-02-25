@@ -31,8 +31,8 @@ class _ChooseDateState extends State<ChooseDate> {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: Row(
-            children: const [
-              Text("Date"),
+            children: [
+              Text(AppStrings.DATE),
             ],
           ),
         ),
@@ -42,8 +42,7 @@ class _ChooseDateState extends State<ChooseDate> {
               readOnly: true,
               controller: TextEditingController(
                   text: viewmodel.fromDate != null
-                      ? "${DateFormat("yyyy-MM-dd").format(viewmodel.fromDate!)} ${viewmodel.toDate != null ? DateFormat("yyyy-MM-dd").format(viewmodel.toDate!) : ""}"
-                      // "${viewmodel.fromDate} - ${viewmodel.toDate ?? ""}"
+                      ? "${DateFormat("dd/MM/yyyy").format(viewmodel.fromDate!)} - ${viewmodel.toDate != null ? DateFormat("dd/MM/yyyy").format(viewmodel.toDate!) : ""}"
                       : null),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -74,7 +73,7 @@ class _ChooseDateState extends State<ChooseDate> {
                               ],
                             ),
                           ),
-                          Calendar()
+                          const Calendar()
                         ],
                       ),
                     );

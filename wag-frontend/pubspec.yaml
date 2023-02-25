@@ -60,6 +60,9 @@ flutter:
   assets:
     - assets/
     - assets/languages/
+    - assets/images/
+    - assets/gifs/
+    
   fonts:
       - family: Raleway_ExtraLight
         fonts:

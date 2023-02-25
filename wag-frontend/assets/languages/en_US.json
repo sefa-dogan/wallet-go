@@ -139,6 +139,7 @@
    "ENTER_IBAN" : "Enter iban",
    "YOUR_PAYMENT_WAS_SUCCESSFUL" :
       "Your payment was successful!",
+      "DATE":"Date",
    "CATEGORY" : "CATEGORY",
    "PAYMENT_DATE" : "PAYMENT DATE",
    "PAYMENT_DETAILS" : "Payment details",
@@ -158,5 +159,9 @@
       "Didn't found user who has this username",
    "UPDATE_FAILED" : "Informations could not updated",
    "INVALID_PASSWORD" : "Invalid password",
-   "SUCCESSFUL" : "Successful"
+   "SUCCESSFUL" : "Successful",
+   "SELECT_BOTH_FROM_AND_TO_DATE": "Please select both from-to date",
+   "THE_UNDER_CONSTRUCTION":"This page is under construction!"
+
+
 }
