@@ -48,11 +48,18 @@ namespace WalletGo.Entities
             return isTrue;
         }
 
-        public async Task<Guid> getUserId(String username)
+        public async Task<Guid?> getUserId(String username)
         {
+            try
+            {
+                AppUser? user = await Repository.FindAsync(x => x.Username == username);
+                return user.Id;
+            }
+            catch (Exception exp)
+            {
+                return null;
+            }
 
-            AppUser user = await Repository.FindAsync(x => x.Username == username);
-            return user.Id;
 
 
         }

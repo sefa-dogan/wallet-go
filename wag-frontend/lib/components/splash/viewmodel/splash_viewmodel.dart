@@ -66,6 +66,7 @@ abstract class _SplashViewModelBase with Store {
       } else {
         debugPrint(
             "Id bilgisi çekilemedi ${response.statusCode}: ${response.statusMessage}");
+        throw Exception();
       }
     } catch (error) {
       debugPrint(error.toString());

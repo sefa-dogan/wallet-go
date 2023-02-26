@@ -13,8 +13,8 @@ using WalletGo.EntityFrameworkCore;
 namespace WalletGo.Migrations
 {
     [DbContext(typeof(WalletGoDbContext))]
-    [Migration("20230215182253_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20230226190621_LastMigration")]
+    partial class LastMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

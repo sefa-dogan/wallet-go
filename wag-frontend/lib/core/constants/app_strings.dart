@@ -6,7 +6,7 @@ class AppStrings {
   static String ADMIN_APP_ACCOUNT_ID = "96569452-a3ba-fa4e-8cea-3a0898688b95";
   static String ADMIN_WALLET_ID = "96569452-a3ba-fa4e-8cea-3a0898688b94";
 
-  static String BASE_URL = "http://192.168.1.38:5000/";
+  static late String BASE_URL;
   static String APP_USERS_PATH = "api/app/app-user/";
   static String IS_USER_REGISTERED_PATH = "api/app/app-user/is-registered/";
   static String USERS_INFO_PATH = "api/app/user-info/";
@@ -40,7 +40,8 @@ class AppStrings {
   static String EXCLAMATION_ICON = "assets/images/exclamation_icon.png";
   static String RECTANGLE_IMG = "assets/images/rectangle.png";
   static String CARD_CVV_IMG = "assets/images/card.png";
-  static String SCAN_CARD_BACKGROUND_IMG = "assets/images/scan_card_background.jpg";
+  static String SCAN_CARD_BACKGROUND_IMG =
+      "assets/images/scan_card_background.jpg";
   static String SUCCESS_PAYMENT_IMG = "assets/images/success.png";
   static String CHECK_ICON = "assets/images/check.png";
   static String SAD_FACE_IMG = "assets/images/sad_face.jpg";

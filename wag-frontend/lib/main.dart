@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/localizations/app_localizations.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +28,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await getAvaibleCameras();
   SharedPref.prefs = await SharedPreferences.getInstance();
-
+  final ip = await NetworkInfo().getWifiIP();
+  AppStrings.BASE_URL = "http://$ip:5000/";
   runApp(MyApp());
 }
 

@@ -143,6 +143,7 @@ abstract class _RegisterViewModelBase with Store {
       }
     } catch (error) {
       debugPrint(error.toString());
+      return Future.error(error);
     }
   }
 
@@ -186,9 +187,11 @@ abstract class _RegisterViewModelBase with Store {
       } else {
         debugPrint(
             "UserInfo, POST ile gönderilemedi; ${response.statusMessage}: ${response.statusCode}");
+        throw Exception();
       }
     } catch (error) {
       debugPrint(error.toString());
+      return Future.error(error);
     }
   }
 
@@ -206,6 +209,7 @@ abstract class _RegisterViewModelBase with Store {
       }
     } catch (error) {
       debugPrint(error.toString());
+      return Future.error(error);
     }
   }
 
@@ -217,12 +221,19 @@ abstract class _RegisterViewModelBase with Store {
         var pushedData = response.data;
         _appAccountId = pushedData["id"];
         inProgress = false;
+        username = "";
+        name = "";
+        surname = "";
+        tcno = "";
+        email = "";
+        password = "";
       } else {
         debugPrint(
             "AppAccount, POST ile gönderilemedi; ${response.statusMessage}: ${response.statusCode}");
       }
     } catch (error) {
       debugPrint(error.toString());
+      return Future.error(error);
     }
   }
 }
