@@ -282,4 +282,5 @@ class AppStrings {
   static String DATE = AppLocalizations.localedStrings["DATE"];
   static String THE_UNDER_CONSTRUCTION =
       AppLocalizations.localedStrings["THE_UNDER_CONSTRUCTION"];
+  static String HAVE_NO_EXPENSE = AppLocalizations.localedStrings["HAVE_NO_EXPENSE"];
 }

@@ -161,7 +161,8 @@
    "INVALID_PASSWORD" : "Invalid password",
    "SUCCESSFUL" : "Successful",
    "SELECT_BOTH_FROM_AND_TO_DATE": "Please select both from-to date",
-   "THE_UNDER_CONSTRUCTION":"This page is under construction!"
+   "THE_UNDER_CONSTRUCTION":"This page is under construction!",
+   "HAVE_NO_EXPENSE":"You have no expense"
 
 
 }

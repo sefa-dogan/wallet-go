@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '2.19.2'
+  sdk: '2.19.3'
 dependencies:
   flutter:
     sdk: flutter
@@ -38,7 +38,6 @@ dependencies:
   flutter_animated_dialog: ^2.0.1
   show_more_text_popup: ^0.3.0
   fluttertoast: ^8.1.2
-  animated_dialog_box: ^0.0.2
   syncfusion_flutter_pdf: ^20.4.43
   path_provider: ^2.0.11
   open_file: ^3.2.1
@@ -56,6 +55,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  test: ^1.22.0
 flutter:
   uses-material-design: true
   assets:

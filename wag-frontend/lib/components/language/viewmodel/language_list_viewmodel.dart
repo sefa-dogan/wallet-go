@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/core/constants/app_strings.dart';
 import 'package:flutter_boilerplate/core/constants/shared_preferences.dart';
+import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
 part 'language_list_viewmodel.g.dart';
 
@@ -24,6 +26,13 @@ abstract class _LanguageListViewModelBase with Store {
         selectedItemIndex = language.contains(selectedLanguage[0])
             ? languages.indexOf(language)
             : 0;
+      }
+    }else{
+      Locale locale = Get.deviceLocale??const Locale("en", "US");
+      for(var language in languages){
+      selectedItemIndex=language.contains(locale.languageCode)? languages.indexOf(language)
+            : 0;
+
       }
     }
   }

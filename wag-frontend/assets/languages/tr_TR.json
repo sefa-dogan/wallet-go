@@ -161,6 +161,7 @@
     "INVALID_PASSWORD" : "Geçersiz şifre",
     "SUCCESSFUL" : "Başarılı",
     "SELECT_BOTH_FROM_AND_TO_DATE": "Lütfen tarih aralığını seçiniz",
-    "THE_UNDER_CONSTRUCTION":"Bu sayfa yapım aşamasında!"
+    "THE_UNDER_CONSTRUCTION":"Bu sayfa yapım aşamasında!",
+    "HAVE_NO_EXPENSE":"Hiç harcamanız yok"
 
  }

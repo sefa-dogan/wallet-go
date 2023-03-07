@@ -1,9 +1,9 @@
 // ignore: import_of_legacy_library_into_null_safe
 // ignore_for_file: use_build_context_synchronously, duplicate_ignore, import_of_legacy_library_into_null_safe
 
-import 'package:animated_dialog_box/animated_dialog_box.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_app_bar.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_custom_alert.dart';
 import 'package:flutter_boilerplate/components/atomic_widgets/sf_elevated_button.dart';
@@ -87,6 +87,7 @@ class PersonalDetailsListScreen extends StatelessWidget {
                                       imagePath: AppStrings.EXCLAMATION_ICON),
                                 );
                               } on NullException catch (nullExp) {
+                                
                                 showDialog(
                                   context: context,
                                   builder: (context) => SFCustomAlert(
@@ -134,35 +135,42 @@ class PersonalDetailsListScreen extends StatelessWidget {
                             opacity: 0.5,
                             opacityColor: AppColor.appOverlayColor,
                           );
+                        
                           isSuccess
-                              ? await animated_dialog_box.showScaleAlertBox(
-                                  context: context,
-                                  icon: SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width / 4,
-                                      height:
-                                          MediaQuery.of(context).size.width / 4,
-                                      child: Image.asset(AppStrings.CHECK_ICON)),
-                                  secondButton: const SizedBox(),
-                                  title: const SizedBox(),
-                                  yourWidget: Container(
-                                    decoration: BoxDecoration(
-                                        color: AppColor.appWhite,
-                                        borderRadius: BorderRadius.circular(
-                                            AppIntValues.TEN)),
-                                    child: const Text("Updated!"),
-                                  ),
-                                  firstButton: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                              ? showAnimatedDialog(
+                                context: context, 
+                                builder: (context) => Center(
+                                child: Container(
+                                  color: AppColor.appWhite,
+                                  width: Get.mediaQuery.size.width*0.5,
+                                  height: Get.mediaQuery.size.width*0.5,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      SFElevatedButton(
-                                        childEB: Text(AppStrings.OK),
-                                        onPressedEB: () => Get.back(),
+                                      SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 5,
+                                    height:
+                                        MediaQuery.of(context).size.width / 5,
+                                    child: Image.asset(AppStrings.CHECK_ICON)),
+                                      const Text(
+                                        "Updated!",
+                                      style: TextStyle(fontSize: AppIntValues.TWENTY),
                                       ),
+                                      SFElevatedButton(
+                                                      childEB: Text(AppStrings.OK),
+                                                      onPressedEB: () => Get.back(),
+                                                    ),
                                     ],
                                   ),
-                                )
-                              : null;
+                                ),
+                              ),
+                              barrierDismissible: true,
+                              animationType:DialogTransitionType.scale,
+                              duration: const Duration(milliseconds: 200),
+                               )
+                               : null;
                         } else {
                           fToast.showToast(
                               child: SFToast(

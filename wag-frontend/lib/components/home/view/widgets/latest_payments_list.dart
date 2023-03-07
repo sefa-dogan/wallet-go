@@ -65,7 +65,7 @@ class LatestPaymentsList extends StatelessWidget {
         SliverList(
           delegate: userStore.lastTransactions.isEmpty
               ? SliverChildBuilderDelegate((context, index) {
-                  return const Center(child: Text("Hiç harcamanız yok"));
+                  return Center(child: Text(AppStrings.HAVE_NO_EXPENSE));
                 }, childCount: 1)
               : SliverChildBuilderDelegate(
                   (BuildContext context, int index) {

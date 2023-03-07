@@ -120,8 +120,8 @@ abstract class _LightViewModelBase with Store {
             debugPrint("Transfer gerçekleşti.");
             var isMyBalanceDecreased =
                 await updateAppAccountBalance(selectedAppAccount!.id, -amount!);
-            var isWalletBalanceDecreased = await updateWalletBalance(-amount!);
-            if (isMyBalanceDecreased && isWalletBalanceDecreased) {
+            await userStore.getWallet();
+            if (isMyBalanceDecreased) {
               await postTrancaction();
               inProgress = false;
               isCompleted = true;
@@ -170,7 +170,7 @@ abstract class _LightViewModelBase with Store {
     }
   }
 
-  Future<bool> updateWalletBalance(double moneyToLoad) async {
+/*   Future<bool> updateWalletBalance(double moneyToLoad) async {
     try {
       var response = await dioClient.put(
           AppStrings.UPDATE_WALLET_BALANCE_PATH + userStore.wallet.id,
@@ -183,7 +183,7 @@ abstract class _LightViewModelBase with Store {
       debugPrint(exception.toString());
       return Future.error(exception);
     }
-  }
+  } */
 
   Map<String, dynamic> createTrancactionAndConvertToMap() {
     var transaction = Transaction(

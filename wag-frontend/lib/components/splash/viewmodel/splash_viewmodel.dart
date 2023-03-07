@@ -21,8 +21,8 @@ abstract class _SplashViewModelBase with Store {
   String password = "";
 
   bool isLoggedIn() {
-    username = SharedPref.prefs.getString("username")!;
-    password = SharedPref.prefs.getString("password")!;
+    username = SharedPref.prefs.getString("username")??"";
+    password = SharedPref.prefs.getString("password")??"";
 
     if (username != "" && password != "") {
       return true;

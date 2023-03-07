@@ -9,6 +9,7 @@ using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using WalletGo.Entities;
 using WalletGo.EntitiesDto.AccountW;
+using WalletGo.EntitiesDto.WalletW;
 using IAppAccountAppService = WalletGo.EntitiesDto.AccountW.IAppAccountAppService;
 
 namespace WalletGo.EntityServices
@@ -20,13 +21,15 @@ namespace WalletGo.EntityServices
             Guid, //Primary key of the book entity
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateAppAccountDto>, //Used to create/update a book
-        IAppAccountAppService //implement the IBookAppService
+        IAppAccountAppService, IWalletAppService
     {
-        public AppAccountAppService(IRepository<AppAccount, Guid> repository)
+        public AppAccountAppService(IRepository<AppAccount, Guid> repository, IRepository<Wallet, Guid> walletRepository)
     : base(repository)
         {
-
+            _walletRepository = walletRepository;
         }
+        IRepository<Wallet, Guid> _walletRepository;
+
         public async Task<List<Guid>> getAccountsId(Guid walletId)
         {
             List<AppAccount> allAppAccounts = new List<AppAccount>();
@@ -55,6 +58,10 @@ namespace WalletGo.EntityServices
                 AppAccount appAccount=new();
                 appAccount = await Repository.FindAsync(appAccountId);
                 appAccount.Balance = appAccount.Balance + amount;
+
+                Wallet wallet = new();
+                wallet = await _walletRepository.GetAsync(x => x.Id == appAccount.WalletId);
+                wallet.Balance = wallet.Balance + amount;
                 return true;
             }
             catch
@@ -63,5 +70,24 @@ namespace WalletGo.EntityServices
             }
         }
 
+        Task<WalletDto> IReadOnlyAppService<WalletDto, WalletDto, Guid, PagedAndSortedResultRequestDto>.GetAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<PagedResultDto<WalletDto>> IReadOnlyAppService<WalletDto, WalletDto, Guid, PagedAndSortedResultRequestDto>.GetListAsync(PagedAndSortedResultRequestDto input)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<WalletDto> ICreateAppService<WalletDto, CreateUpdateWalletDto>.CreateAsync(CreateUpdateWalletDto input)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<WalletDto> IUpdateAppService<WalletDto, Guid, CreateUpdateWalletDto>.UpdateAsync(Guid id, CreateUpdateWalletDto input)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
